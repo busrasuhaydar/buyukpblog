@@ -36,18 +36,40 @@
                 display: none !important;
             }
             
-            /* Tüm ocean canvas'ları da gizle (performans) */
-            canvas[id*="ocean-canvas"],
+            /* İLK ocean canvas GÖRÜNEBİLİR (hero) */
+            #ocean-canvas {
+                display: block !important;
+            }
+            
+            /* Diğer tüm ocean canvas'ları gizle */
+            canvas[id*="ocean-canvas-"],
             canvas[id*="concept-ocean-canvas"] {
                 display: none !important;
             }
             
-            /* Section'lara düz arkaplan */
+            /* Section'lara ORJİNAL TURUNCU-MAVİ gradient arkaplan */
             .content-section,
-            #next-section,
-            #hero-section {
-                background: linear-gradient(180deg, #000428 0%, #004e92 100%) !important;
+            #next-section {
+                background: linear-gradient(135deg, 
+                    #1e3c72 0%, 
+                    #2a5298 25%,
+                    #7e22ce 50%,
+                    #c2410c 75%,
+                    #ff7733 100%) !important;
+                background-size: 400% 400% !important;
+                animation: gradientShift 15s ease infinite !important;
             }
+            
+            /* Hero section arkaplan */
+            #hero-section {
+                background: transparent !important;
+            }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         body {
@@ -3349,6 +3371,66 @@
                 overflow-y: auto !important;
             }
             
+            /* SCROLL BAR'I GÖRÜNÜR YAP - HER YERDE */
+            .section-content::-webkit-scrollbar,
+            .section-text-content::-webkit-scrollbar,
+            .section-6-column::-webkit-scrollbar,
+            .section-3-universe-content::-webkit-scrollbar,
+            .section-magic-content::-webkit-scrollbar,
+            .section-9-locked-content::-webkit-scrollbar,
+            .magic-body::-webkit-scrollbar,
+            .magic-intro::-webkit-scrollbar {
+                width: 10px !important;
+                display: block !important;
+            }
+            
+            .section-content::-webkit-scrollbar-track,
+            .section-text-content::-webkit-scrollbar-track,
+            .section-6-column::-webkit-scrollbar-track,
+            .section-3-universe-content::-webkit-scrollbar-track,
+            .section-magic-content::-webkit-scrollbar-track,
+            .section-9-locked-content::-webkit-scrollbar-track,
+            .magic-body::-webkit-scrollbar-track,
+            .magic-intro::-webkit-scrollbar-track {
+                background: rgba(255, 119, 51, 0.2) !important;
+                border-radius: 10px !important;
+            }
+            
+            .section-content::-webkit-scrollbar-thumb,
+            .section-text-content::-webkit-scrollbar-thumb,
+            .section-6-column::-webkit-scrollbar-thumb,
+            .section-3-universe-content::-webkit-scrollbar-thumb,
+            .section-magic-content::-webkit-scrollbar-thumb,
+            .section-9-locked-content::-webkit-scrollbar-thumb,
+            .magic-body::-webkit-scrollbar-thumb,
+            .magic-intro::-webkit-scrollbar-thumb {
+                background: rgba(255, 119, 51, 0.7) !important;
+                border-radius: 10px !important;
+            }
+            
+            .section-content::-webkit-scrollbar-thumb:hover,
+            .section-text-content::-webkit-scrollbar-thumb:hover,
+            .section-6-column::-webkit-scrollbar-thumb:hover,
+            .section-3-universe-content::-webkit-scrollbar-thumb:hover,
+            .section-magic-content::-webkit-scrollbar-thumb:hover,
+            .section-9-locked-content::-webkit-scrollbar-thumb:hover,
+            .magic-body::-webkit-scrollbar-thumb:hover,
+            .magic-intro::-webkit-scrollbar-thumb:hover {
+                background: rgba(255, 119, 51, 0.9) !important;
+            }
+            
+            /* Scroll bar için yeterli alan - overflow ZORUNLU */
+            .section-content,
+            .section-text-content,
+            .section-6-column,
+            .section-3-universe-content,
+            .section-magic-content,
+            .section-9-locked-content {
+                overflow-y: scroll !important;
+                scrollbar-width: thin !important;
+                scrollbar-color: rgba(255, 119, 51, 0.7) rgba(255, 119, 51, 0.2) !important;
+            }
+            
             /* Text block padding */
             .text-block {
                 padding: 1rem !important;
@@ -3370,10 +3452,10 @@
             [class*="section-"][class*="-right-image"] {
                 position: relative !important;
                 transform: none !important;
-                width: 60% !important;
-                max-width: 200px !important;
+                width: 50% !important;
+                max-width: 180px !important;
                 height: auto !important;
-                max-height: 20vh !important;
+                max-height: 18vh !important;
                 margin: 0.5rem auto !important;
                 display: block !important;
                 left: auto !important;
@@ -3382,31 +3464,121 @@
                 object-fit: contain !important;
             }
             
-            /* Section 3 - The Universe */
+            /* Section 3 - The Universe - AKILLI DÜZEN */
+            /* MOBİLDE: Önce görsel göster, scroll'da metin göster */
             .section-3-content-container {
                 width: 90% !important;
                 max-width: 100% !important;
                 flex-direction: column !important;
-                gap: 1rem !important;
+                gap: 0 !important;
                 max-height: none !important;
+                padding: 0 !important;
+                position: relative !important;
+                min-height: 100vh !important;
             }
             
-            .section-3-image-container,
-            .section-3-universe-content {
-                flex: none !important;
-                width: 100% !important;
-                max-height: none !important;
+            /* Features header üstte sabit */
+            .section-3-features-header {
+                position: absolute !important;
+                top: 10px !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                width: 90% !important;
+                margin: 0 !important;
+                padding: 0.6rem !important;
+                gap: 0.4rem !important;
+                z-index: 10 !important;
+            }
+            
+            /* Görsel container - tam ekran ortalı */
+            .section-3-image-container {
+                position: absolute !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                width: 85% !important;
+                max-width: 400px !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                z-index: 5 !important;
             }
             
             .section-3-dream-piano-image {
-                max-height: 25vh !important;
+                max-height: 40vh !important;
                 width: auto !important;
-                max-width: 80% !important;
+                max-width: 100% !important;
+                display: block !important;
+                margin: 0 auto !important;
             }
             
+            /* Metin container - scroll yapılabilir, başlangıçta scroll gerektirir */
             .section-3-universe-content {
-                max-height: 50vh !important;
-                overflow-y: auto !important;
+                position: absolute !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                max-height: 0 !important;
+                overflow-y: scroll !important;
+                padding: 0 !important;
+                background: rgba(0, 0, 0, 0.85) !important;
+                backdrop-filter: blur(10px) !important;
+                transition: max-height 0.3s ease, padding 0.3s ease !important;
+                z-index: 15 !important;
+            }
+            
+            /* Scroll'da metin expand olur */
+            .section-3-universe-content.expanded {
+                max-height: 60vh !important;
+                padding: 1.5rem !important;
+            }
+            
+            /* Section 3'e scroll ipucu ekle */
+            .section-3-content-container::after {
+                content: "↓ Scroll for content" !important;
+                position: absolute !important;
+                bottom: 80px !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                color: rgba(255, 119, 51, 0.8) !important;
+                font-size: 0.85rem !important;
+                animation: bounceDown 2s infinite !important;
+                z-index: 20 !important;
+                pointer-events: none !important;
+            }
+            
+            /* Section 7 - Final Story - AYNI MANTIK */
+            #section-7 .section-3-content-container {
+                min-height: 100vh !important;
+                gap: 0 !important;
+            }
+            
+            #section-7 .section-3-image-container {
+                position: absolute !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                z-index: 5 !important;
+            }
+            
+            #section-7 .section-3-universe-content {
+                position: absolute !important;
+                bottom: 0 !important;
+                max-height: 0 !important;
+                overflow-y: scroll !important;
+                padding: 0 !important;
+                background: rgba(0, 0, 0, 0.85) !important;
+                z-index: 15 !important;
+            }
+            
+            #section-7 .section-3-universe-content.expanded {
+                max-height: 60vh !important;
+                padding: 1.5rem !important;
+            }
+            
+            #section-7 .section-3-dream-piano-image {
+                max-height: 38vh !important;
             }
             
             /* Section 6 - Split columns */
@@ -3430,14 +3602,38 @@
             .video-container {
                 width: 90% !important;
                 max-width: 500px !important;
+                max-height: 50vh !important;
             }
             
-            /* Magic content */
+            /* Magic content - MOBİLDE SCROLL EDİLEBİLİR */
             .section-magic-content {
                 width: 90% !important;
                 padding: 1.5rem 1rem !important;
-                max-height: 70vh !important;
-                overflow-y: auto !important;
+                max-height: 75vh !important;
+                overflow-y: scroll !important;
+            }
+            
+            .magic-title {
+                font-size: clamp(1.8rem, 6vw, 2.5rem) !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .magic-intro {
+                max-height: none !important;
+                overflow: visible !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .magic-body {
+                max-height: none !important;
+                overflow: visible !important;
+            }
+            
+            .magic-text,
+            .magic-text-emphasis {
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+                margin-bottom: 0.8rem !important;
             }
             
             /* Locked content */
@@ -3457,15 +3653,29 @@
                 height: clamp(80px, 12vw, 150px) !important;
             }
             
-            /* Features header */
-            .section-3-features-header {
-                padding: 0.6rem !important;
-                gap: 0.4rem !important;
-            }
-            
+            /* Features tag */
             .feature-tag {
                 padding: 0.3rem 0.6rem !important;
                 font-size: 0.6rem !important;
+            }
+            
+            /* Scroll indicators mobilde görünür */
+            .scroll-indicator-up,
+            .scroll-indicator-down {
+                display: flex !important;
+                width: 50px !important;
+                height: 50px !important;
+                justify-content: center !important;
+                align-items: center !important;
+                background: rgba(255, 119, 51, 0.3) !important;
+                border-radius: 50% !important;
+                backdrop-filter: blur(5px) !important;
+            }
+            
+            .scroll-arrow-up,
+            .scroll-arrow-down {
+                width: 20px !important;
+                height: 20px !important;
             }
         }
         
@@ -6436,6 +6646,71 @@
         document.addEventListener('touchcancel', () => {
             isTouching = false;
         }, { passive: true });
+
+        // ==========================================
+        // MOBİLDE SECTION 3 VE 7 İÇİN SCROLL EXPAND
+        // ==========================================
+        
+        if (window.innerWidth <= 1024) {
+            // Section 3 metin container
+            const section3Text = document.querySelector('#section-3 .section-3-universe-content');
+            const section3Container = document.querySelector('#section-3 .section-3-content-container');
+            
+            if (section3Text && section3Container) {
+                let isExpanded3 = false;
+                
+                // Touch scroll detection
+                section3Container.addEventListener('touchmove', (e) => {
+                    if (!isExpanded3) {
+                        const touch = e.touches[0];
+                        const startY = section3Container.getBoundingClientRect().top;
+                        const touchY = touch.clientY;
+                        
+                        // Aşağı scroll yaparsa expand et
+                        if (touchY < startY + 200) {
+                            section3Text.classList.add('expanded');
+                            isExpanded3 = true;
+                        }
+                    }
+                });
+                
+                // Scroll wheel detection (tablet)
+                section3Container.addEventListener('wheel', (e) => {
+                    if (e.deltaY > 0 && !isExpanded3) {
+                        section3Text.classList.add('expanded');
+                        isExpanded3 = true;
+                    }
+                });
+            }
+            
+            // Section 7 metin container (aynı mantık)
+            const section7Text = document.querySelector('#section-7 .section-3-universe-content');
+            const section7Container = document.querySelector('#section-7 .section-3-content-container');
+            
+            if (section7Text && section7Container) {
+                let isExpanded7 = false;
+                
+                section7Container.addEventListener('touchmove', (e) => {
+                    if (!isExpanded7) {
+                        const touch = e.touches[0];
+                        const startY = section7Container.getBoundingClientRect().top;
+                        const touchY = touch.clientY;
+                        
+                        if (touchY < startY + 200) {
+                            section7Text.classList.add('expanded');
+                            isExpanded7 = true;
+                        }
+                    }
+                });
+                
+                section7Container.addEventListener('wheel', (e) => {
+                    if (e.deltaY > 0 && !isExpanded7) {
+                        section7Text.classList.add('expanded');
+                        isExpanded7 = true;
+                    }
+                });
+            }
+        }
 
         // ==========================================
         // PROFESSIONAL IMAGE LIGHTBOX SYSTEM
