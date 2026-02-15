@@ -2364,28 +2364,94 @@
         }
 
 
-        /* MOBILE RESPONSIVE */
+        /* MOBILE: Hide background video for speed */
         @media (max-width: 768px) {
+            #background-video {
+                display: none !important;
+            }
+            
             body {
-                overflow: hidden;
-                -webkit-overflow-scrolling: touch;
+                background: #000;
             }
-            
-            #hero-section h1 {
-                font-size: 2.5rem !important;
+        }
+
+        /* ========== SCROLL ARROWS ========== */
+        .scroll-indicator-up,
+        .scroll-indicator-down {
+            position: absolute;
+            left: 20px;
+            z-index: 1000;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
+        .scroll-indicator-up {
+            top: 20px;
+            animation: bounceUp 2s infinite;
+        }
+        
+        .scroll-indicator-down {
+            bottom: 20px;
+            animation: bounceDown 2s infinite;
+        }
+        
+        .scroll-indicator-up:hover,
+        .scroll-indicator-down:hover,
+        .scroll-indicator-up:active,
+        .scroll-indicator-down:active {
+            opacity: 1;
+        }
+        
+        .scroll-arrow-up,
+        .scroll-arrow-down {
+            width: 30px;
+            height: 30px;
+            border-left: 3px solid rgba(255, 255, 255, 0.9);
+            border-bottom: 3px solid rgba(255, 255, 255, 0.9);
+        }
+        
+        .scroll-arrow-up {
+            transform: rotate(135deg);
+        }
+        
+        .scroll-arrow-down {
+            transform: rotate(-45deg);
+        }
+        
+        @keyframes bounceUp {
+            0%, 100% { transform: translateY(0) rotate(135deg); }
+            50% { transform: translateY(-10px) rotate(135deg); }
+        }
+        
+        @keyframes bounceDown {
+            0%, 100% { transform: translateY(0) rotate(-45deg); }
+            50% { transform: translateY(10px) rotate(-45deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .scroll-arrow-up,
+            .scroll-arrow-down {
+                width: 25px;
+                height: 25px;
+                border-width: 2px;
             }
-            
-            .scroll-prompt {
-                font-size: 1rem !important;
-                padding: 0.8rem 1.5rem !important;
-            }
-            
+        }
+
+        #section-19.active #ocean-canvas-19 {
+            opacity: 1;
+        }
+
+        /* ========== MOBILE RESPONSIVE ========== */
+        @media (max-width: 768px) {
             .section-content {
-                padding: 60px 15px !important;
+                padding: 40px 15px !important;
             }
             
             .section-title {
-                font-size: 1.8rem !important;
+                font-size: 1.5rem !important;
             }
             
             .story-text {
@@ -2399,104 +2465,22 @@
             .piano-video {
                 max-height: 40vh !important;
             }
+            
+            /* Gallery responsive */
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.5rem !important;
+            }
         }
-
+        
         @media (max-width: 480px) {
-            #hero-section h1 {
-                font-size: 2rem !important;
-            }
-            
-            .scroll-prompt {
-                font-size: 0.9rem !important;
-                padding: 0.7rem 1.3rem !important;
-            }
-            
             .section-title {
-                font-size: 1.5rem !important;
+                font-size: 1.3rem !important;
             }
             
             .story-text {
                 font-size: 0.9rem !important;
             }
-        }
-
-        /* SCROLL ARROWS */
-        .scroll-indicator-up {
-            position: absolute;
-            top: 40px;
-            left: 40px;
-            z-index: 100;
-            animation: bounceUp 2s infinite;
-            opacity: 0.7;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-        }
-
-        .scroll-indicator-up:hover {
-            opacity: 1;
-        }
-
-        .scroll-indicator-down {
-            position: absolute;
-            bottom: 40px;
-            left: 40px;
-            z-index: 100;
-            animation: bounceDown 2s infinite;
-            opacity: 0.7;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-        }
-
-        .scroll-indicator-down:hover {
-            opacity: 1;
-        }
-
-        .scroll-arrow-up {
-            width: 30px;
-            height: 30px;
-            border-left: 3px solid rgba(255, 255, 255, 0.8);
-            border-bottom: 3px solid rgba(255, 255, 255, 0.8);
-            transform: rotate(135deg);
-        }
-
-        .scroll-arrow-down {
-            width: 30px;
-            height: 30px;
-            border-left: 3px solid rgba(255, 255, 255, 0.8);
-            border-bottom: 3px solid rgba(255, 255, 255, 0.8);
-            transform: rotate(-45deg);
-        }
-
-        @keyframes bounceUp {
-            0%, 100% { transform: translateY(0) rotate(135deg); }
-            50% { transform: translateY(-10px) rotate(135deg); }
-        }
-
-        @keyframes bounceDown {
-            0%, 100% { transform: translateY(0) rotate(-45deg); }
-            50% { transform: translateY(10px) rotate(-45deg); }
-        }
-
-        @media (max-width: 768px) {
-            .scroll-indicator-up, .scroll-indicator-down {
-                left: 20px;
-            }
-            
-            .scroll-arrow-up, .scroll-arrow-down {
-                width: 25px;
-                height: 25px;
-                border-width: 2px;
-            }
-        }
-
-        /* PREVENT MOBILE ZOOM ON INPUT FOCUS */
-        input, select, textarea {
-            font-size: 16px !important;
-        }
-        
-        /* MOBILE SMOOTH SCROLLING */
-        * {
-            -webkit-tap-highlight-color: transparent;
         }
     </style>
 </head>
@@ -2505,7 +2489,7 @@
     <div class="image-lightbox" id="imageLightbox">
         <div class="lightbox-close" id="lightboxClose">×</div>
         <div class="lightbox-image-container">
-            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+            <img loading="lazy" src="" alt="" class="lightbox-image" id="lightboxImage">
         </div>
         <div class="lightbox-instructions">Click image to zoom • Click outside to close</div>
     </div>
@@ -2554,6 +2538,12 @@
 
     <!-- Next Section - The Concept with Underwater Ocean -->
     <section id="next-section" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         <canvas id="concept-ocean-canvas"></canvas>
         <div class="section-content">
             <div class="video-container">
@@ -2572,16 +2562,16 @@
                 </div>
             </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 3 - The Universe with Features -->
     <section id="section-3" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         <canvas id="ocean-canvas-3"></canvas>
         
         <!-- Features header at top -->
@@ -2602,7 +2592,7 @@
         <div class="section-3-content-container">
             <!-- Left: Dream Piano Image -->
             <div class="section-3-image-container">
-                <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/MYDREAMPIANO.JPEG" 
+                <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/MYDREAMPIANO.JPEG" 
                      alt="My Dream Piano" 
                      class="section-3-dream-piano-image" />
             </div>
@@ -2645,16 +2635,16 @@
             </div>
         </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 4 -->
     <section id="section-4" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         <div class="section-content section-magic-content">
             <h2 class="section-title magic-title">The Magic</h2>
             
@@ -2699,24 +2689,24 @@
                 <div class="magic-circle"></div>
             </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 5 - C/DO Note -->
     <section id="section-5" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         
         <!-- Left side image - ABSOLUTE -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/1.c3du%CC%88z.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/1.c3du%CC%88z.png" 
              alt="Left C Note Visual" 
              class="section-5-left-image" />
         
         <!-- Right side image - ABSOLUTE -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/1.c3.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/1.c3.png" 
              alt="Right C Note Visual" 
              class="section-5-right-image" />
         
@@ -2862,24 +2852,24 @@
                 </p>
             </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 6 - Two Column: 2.DO and 3.DO -->
     <section id="section-6" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         
         <!-- Left side image - 8.c4.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/8.c4.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/8.c4.png" 
              alt="2.DO C4 Visual" 
              class="section-6-left-image" />
         
         <!-- Right side image - 15.c5yeni.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/15.c5yeni.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/15.c5yeni.png" 
              alt="3.DO C5 Visual" 
              class="section-6-right-image" />
         
@@ -2940,19 +2930,19 @@
                 </div>
             </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 7 - RE (2nd Key) -->
     <section id="section-7" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         
         <!-- Right side image - 2.D3.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/2.D3.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/2.D3.png" 
              alt="RE D3 Visual" 
              class="section-7-right-image" />
         
@@ -2991,24 +2981,24 @@
                 </p>
             </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 8 - RE 9th Key -->
     <section id="section-8" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         
         <!-- Left side image - 9.d4düz.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/9.d4du%CC%88z.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/9.d4du%CC%88z.png" 
              alt="RE D4 Left Visual" 
              class="section-8-left-image" />
         
         <!-- Right side image - 9.d4.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/9.d4.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/9.d4.png" 
              alt="RE D4 Right Visual" 
              class="section-8-right-image" />
         
@@ -3065,24 +3055,24 @@
                 </p>
             </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 9 - 3.RE 16th Key (Locked) -->
     <section id="section-9" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         
         <!-- Left side image - 16d5düz.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/16d5du%CC%88z.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/16d5du%CC%88z.png" 
              alt="RE D5 Locked Left Visual" 
              class="section-9-left-image" />
         
         <!-- Right side image - 16d5.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/16d5.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/16d5.png" 
              alt="RE D5 Locked Right Visual" 
              class="section-9-right-image" />
         
@@ -3105,24 +3095,24 @@
                 <rect x="48" y="60" width="4" height="10" fill="rgba(77, 208, 225, 0.3)"/>
             </svg>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 10 - 1.MI E 3rd key -->
     <section id="section-10" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         
         <!-- Left side image - e3düz.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/e3du%CC%88z.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/e3du%CC%88z.png" 
              alt="MI E3 Left Visual" 
              class="section-10-left-image" />
         
         <!-- Right side image - e3.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/e3.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/e3.png" 
              alt="MI E3 Right Visual" 
              class="section-10-right-image" />
         
@@ -3191,19 +3181,19 @@
                 </p>
             </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 11 - 2.MI E 10th key -->
     <section id="section-11" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         
         <!-- Right side image - 10.E4.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/10.E4.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/10.E4.png" 
              alt="MI E4 Visual" 
              class="section-11-right-image" />
         
@@ -3232,19 +3222,19 @@
                 </p>
             </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 12 - 1.FA F 4th key -->
     <section id="section-12" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         
         <!-- Right side image - f3.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/f3.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/f3.png" 
              alt="FA F3 Visual" 
              class="section-12-right-image" />
         
@@ -3276,24 +3266,24 @@
                 </p>
             </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 13 - 2.FA F 11th key -->
     <section id="section-13" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         
         <!-- Left side image - 11.F4.düz.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/11.F4.du%CC%88z.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/11.F4.du%CC%88z.png" 
              alt="FA F4 Left Visual" 
              class="section-13-left-image" />
         
         <!-- Right side image - 11.F4.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/11.F4.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/11.F4.png" 
              alt="FA F4 Right Visual" 
              class="section-13-right-image" />
         
@@ -3381,19 +3371,19 @@
                 </div>
             </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 14 - 1.SOL G 5th key -->
     <section id="section-14" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         
         <!-- Right side image - 5.G3.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/5.G3.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/5.G3.png" 
              alt="SOL G3 Visual" 
              class="section-14-right-image" />
         
@@ -3437,19 +3427,19 @@
                 </p>
             </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 15 - 2.SOL G 12th key -->
     <section id="section-15" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         
         <!-- Right side image - 12.G4.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/12.G4.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/12.G4.png" 
              alt="SOL G4 Visual" 
              class="section-15-right-image" />
         
@@ -3490,24 +3480,24 @@
                 </p>
             </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 16 - 1.SI B 7th key -->
     <section id="section-16" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         
         <!-- Left side image - 7.B3.düz.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/7.B3.du%CC%88z.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/7.B3.du%CC%88z.png" 
              alt="SI B3 Left Visual" 
              class="section-16-left-image" />
         
         <!-- Right side image - 7.B3.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/7.B3.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/7.B3.png" 
              alt="SI B3 Right Visual" 
              class="section-16-right-image" />
         
@@ -3577,24 +3567,24 @@
                 </p>
             </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 17 - 2.SI B 14th key FIRE -->
     <section id="section-17" class="content-section">
+        <div class="scroll-indicator-up">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down">
+            <div class="scroll-arrow-down"></div>
+        </div>
         
         <!-- Left side image - 14.B4.düz.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/14.B4.du%CC%88z.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/14.B4.du%CC%88z.png" 
              alt="SI B4 Fire Left Visual" 
              class="section-17-left-image" />
         
         <!-- Right side image - 14.B4.png -->
-        <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/14.B4.png" 
+        <img loading="lazy" src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/14.B4.png" 
              alt="SI B4 Fire Right Visual" 
              class="section-17-right-image" />
         
@@ -3655,73 +3645,77 @@
                 <p class="story-text-bold section-17-fire">I AM ANGRY.</p>
             </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
     </section>
 
     <!-- Section 18 - Empty Ocean -->
     <section id="section-18" class="content-section gallery-section">
-        <div class="gallery-grid">
-            <div class="gallery-card"><img src="https://picsum.photos/id/660/1200/1200" alt="1"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/669/1200/1200" alt="2"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/823/1200/1200" alt="3"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/64/1200/1200" alt="4"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/836/1200/1200" alt="5"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/1027/1200/1200" alt="6"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/646/1200/1200" alt="7"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/10/1200/1200" alt="8"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/20/1200/1200" alt="9"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/30/1200/1200" alt="10"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/40/1200/1200" alt="11"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/50/1200/1200" alt="12"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/60/1200/1200" alt="13"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/70/1200/1200" alt="14"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/80/1200/1200" alt="15"></div>
-        </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
+        <div class="scroll-indicator-up">
             <div class="scroll-arrow-up"></div>
         </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
+        <div class="scroll-indicator-down">
             <div class="scroll-arrow-down"></div>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-card"><img loading="lazy" src="https://picsum.photos/id/660/1200/1200" alt="1"></div>
+            <div class="gallery-card"><img loading="lazy" src="https://picsum.photos/id/669/1200/1200" alt="2"></div>
+            <div class="gallery-card"><img loading="lazy" src="https://picsum.photos/id/823/1200/1200" alt="3"></div>
+            <div class="gallery-card"><img loading="lazy" src="https://picsum.photos/id/64/1200/1200" alt="4"></div>
+            <div class="gallery-card"><img loading="lazy" src="https://picsum.photos/id/836/1200/1200" alt="5"></div>
+            <div class="gallery-card"><img loading="lazy" src="https://picsum.photos/id/1027/1200/1200" alt="6"></div>
+            <div class="gallery-card"><img loading="lazy" src="https://picsum.photos/id/646/1200/1200" alt="7"></div>
+            <div class="gallery-card"><img loading="lazy" src="https://picsum.photos/id/10/1200/1200" alt="8"></div>
+            <div class="gallery-card"><img loading="lazy" src="https://picsum.photos/id/20/1200/1200" alt="9"></div>
+            <div class="gallery-card"><img loading="lazy" src="https://picsum.photos/id/30/1200/1200" alt="10"></div>
+            <div class="gallery-card"><img loading="lazy" src="https://picsum.photos/id/40/1200/1200" alt="11"></div>
+            <div class="gallery-card"><img loading="lazy" src="https://picsum.photos/id/50/1200/1200" alt="12"></div>
+            <div class="gallery-card"><img loading="lazy" src="https://picsum.photos/id/60/1200/1200" alt="13"></div>
+            <div class="gallery-card"><img loading="lazy" src="https://picsum.photos/id/70/1200/1200" alt="14"></div>
+            <div class="gallery-card"><img loading="lazy" src="https://picsum.photos/id/80/1200/1200" alt="15"></div>
         </div>
     </section>
 
-        <!-- Section 19 - Water Based Universe -->
+    <!-- Section 19 - Water Based Universe -->
     <section id="section-19" class="content-section">
         <canvas id="ocean-canvas-19"></canvas>
         
-        <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1200px; text-align: center; z-index: 15;">
-            <h2 style="font-size: 2rem; color: #4dd0e1; text-shadow: 0 0 20px rgba(77, 208, 225, 0.6); margin: 0;">
+        <div style="position: absolute; top: 5%; left: 50%; transform: translateX(-50%); width: 95%; max-width: 1200px; text-align: center; z-index: 15; padding: 0 10px;">
+            <h2 style="font-size: clamp(1.3rem, 4vw, 2rem); color: #4dd0e1; text-shadow: 0 0 20px rgba(77, 208, 225, 0.6); margin: 0; line-height: 1.4;">
                 How is the entire artwork, the entire universe completely WATER BASED?
             </h2>
         </div>
         
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; gap: 3rem; width: 90%; max-width: 1400px; z-index: 10; align-items: center; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 300px; max-width: 600px; max-height: 60vh; overflow-y: auto; padding: 2.5rem; background: rgba(0, 0, 0, 0.6); border-radius: 20px; backdrop-filter: blur(20px); border: 1px solid rgba(77, 208, 225, 0.3);">
-                <p class="story-text">This universe is built on a real physical water simulation.</p>
-                <p class="story-text">In the background, it takes the colors and shades found ONLY on the Su'rreal piano, and based on Su's special traditional painting techniques, it creates generative art.</p>
-                <p class="story-text">This could also, perhaps somewhat ambitiously, mean bringing the Touch Designer page live to the web in real time. :)</p>
-                <p class="story-text-emphasis">In summary,</p>
-                <p class="story-text">Based on Su's special traditional art techniques, it creates generative art that is conscious, deliberately limited, yet holds infinite possibilities within itself. The shape, speed, intensity of the brushstrokes and all parameters are created in real time from the frequencies of that note.</p>
-            </div>
-            
-            <div style="flex: 1; min-width: 300px; max-width: 700px;">
-                <video id="water-video-19" style="width: 100%; max-height: 60vh; border-radius: 15px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); border: 2px solid rgba(77, 208, 225, 0.3);" autoplay loop muted playsinline preload="auto">
-                    <source src="https://cdn.jsdelivr.net/gh/busrasuhaydar/buyukpblog@main/assets/vm.mp4" type="video/mp4">
-                    <source src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/vm.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 95%; max-width: 1400px; z-index: 10; padding: 0 10px;">
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; align-items: center;">
+                <!-- Text Box -->
+                <div style="flex: 1; min-width: 280px; max-width: 600px; max-height: 60vh; overflow-y: auto; padding: 1.5rem; background: rgba(0, 0, 0, 0.7); border-radius: 15px; backdrop-filter: blur(20px); border: 1px solid rgba(77, 208, 225, 0.3);">
+                    <p style="font-size: clamp(0.9rem, 2vw, 1.1rem); line-height: 1.8; color: #e0f7fa; margin-bottom: 1rem;">
+                        This universe is built on a real physical water simulation.
+                    </p>
+                    <p style="font-size: clamp(0.9rem, 2vw, 1.1rem); line-height: 1.8; color: #e0f7fa; margin-bottom: 1rem;">
+                        In the background, it takes the colors and shades found ONLY on the Su'rreal piano, and based on Su's special traditional painting techniques, it creates generative art.
+                    </p>
+                    <p style="font-size: clamp(0.9rem, 2vw, 1.1rem); line-height: 1.8; color: #e0f7fa; margin-bottom: 1rem;">
+                        This could also, perhaps somewhat ambitiously, mean bringing the Touch Designer page live to the web in real time. :)
+                    </p>
+                    <p style="font-size: clamp(0.9rem, 2vw, 1.15rem); line-height: 1.8; color: #4dd0e1; font-weight: 600; margin-bottom: 0.8rem;">
+                        In summary,
+                    </p>
+                    <p style="font-size: clamp(0.9rem, 2vw, 1.1rem); line-height: 1.8; color: #e0f7fa; margin-bottom: 0;">
+                        Based on Su's special traditional art techniques, it creates generative art that is conscious, deliberately limited, yet holds infinite possibilities within itself. The shape, speed, intensity of the brushstrokes and all parameters are created in real time from the frequencies of that note.
+                    </p>
+                </div>
+                
+                <!-- Video -->
+                <div style="flex: 1; min-width: 280px; max-width: 700px;">
+                    <video id="water-video-19" style="width: 100%; max-height: 60vh; border-radius: 15px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); border: 2px solid rgba(77, 208, 225, 0.3);" autoplay loop muted playsinline preload="metadata">
+                        <source src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/vm.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
         </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()" ontouchstart="scrollToPrevSection()">
+        
+        <div class="scroll-indicator-up">
             <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()" ontouchstart="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
         </div>
     </section>
 
@@ -3893,55 +3887,74 @@
         const canvas7 = document.getElementById('ocean-canvas-7');
         const canvas8 = document.getElementById('ocean-canvas-8');
 
+        // Handle scroll for all sections
 
-        // MOBILE TOUCH SUPPORT
+        // ========== MOBILE TOUCH SUPPORT ==========
         let touchStartY = 0;
         let touchEndY = 0;
-        let touchStartTime = 0;
         const minSwipeDistance = 50;
-        const maxSwipeTime = 500;
 
         document.addEventListener('touchstart', (e) => {
             touchStartY = e.touches[0].clientY;
-            touchStartTime = Date.now();
         }, { passive: true });
 
         document.addEventListener('touchend', (e) => {
             touchEndY = e.changedTouches[0].clientY;
-            const touchTime = Date.now() - touchStartTime;
             const swipeDistance = touchStartY - touchEndY;
             
-            if (Math.abs(swipeDistance) > minSwipeDistance && touchTime < maxSwipeTime) {
+            if (Math.abs(swipeDistance) > minSwipeDistance) {
                 if (swipeDistance > 0) {
                     // Swipe up - next section
-                    handleWheel({ deltaY: 1, preventDefault: () => {} });
+                    const fakeEvent = { deltaY: 1, preventDefault: () => {} };
+                    handleWheel(fakeEvent);
                 } else {
-                    // Swipe down - previous section
-                    handleWheel({ deltaY: -1, preventDefault: () => {} });
+                    // Swipe down - previous section  
+                    const fakeEvent = { deltaY: -1, preventDefault: () => {} };
+                    handleWheel(fakeEvent);
                 }
             }
         }, { passive: true });
 
-        // Handle scroll for all sections
 
-        
-        // SCROLL ARROW FUNCTIONS
+        // ========== SCROLL ARROW FUNCTIONS ==========
         function scrollToNextSection() {
-            if (isTransitioning) return;
-            if (currentSection < 19) {
-                handleWheel({ deltaY: 100, preventDefault: () => {} });
+            if (!isTransitioning && currentSection < 19) {
+                const fakeEvent = { deltaY: 1, preventDefault: () => {} };
+                handleWheel(fakeEvent);
             }
         }
         
         function scrollToPrevSection() {
-            if (isTransitioning) return;
-            if (currentSection > 1) {
-                handleWheel({ deltaY: -100, preventDefault: () => {} });
+            if (!isTransitioning && currentSection > 1) {
+                const fakeEvent = { deltaY: -1, preventDefault: () => {} };
+                handleWheel(fakeEvent);
             }
         }
         
+        // Make functions globally accessible
         window.scrollToNextSection = scrollToNextSection;
         window.scrollToPrevSection = scrollToPrevSection;
+        
+        // Add event listeners when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.scroll-indicator-up').forEach(el => {
+                el.addEventListener('click', scrollToPrevSection);
+                el.addEventListener('touchend', (e) => {
+                    e.preventDefault();
+                    scrollToPrevSection();
+                });
+            });
+            
+            document.querySelectorAll('.scroll-indicator-down').forEach(el => {
+                el.addEventListener('click', scrollToNextSection);
+                el.addEventListener('touchend', (e) => {
+                    e.preventDefault();
+                    scrollToNextSection();
+                });
+            });
+            
+            console.log('Scroll arrows initialized');
+        });
 
         function handleWheel(e) {
             e.preventDefault();
@@ -5057,24 +5070,6 @@
             document.body.style.overflow = 'hidden';
         });
     });
-    
-        // VIDEO AUTO-LOAD FIX
-        document.addEventListener('DOMContentLoaded', () => {
-            const waterVideo = document.getElementById('water-video-19');
-            if (waterVideo) {
-                waterVideo.addEventListener('loadeddata', () => {
-                    console.log('Water video loaded');
-                });
-                waterVideo.addEventListener('error', (e) => {
-                    console.error('Video error:', e);
-                    // Retry with backup source
-                    waterVideo.src = 'https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/vm.mp4';
-                });
-                // Force load
-                waterVideo.load();
-                waterVideo.play().catch(e => console.log('Autoplay prevented'));
-            }
-        });
-</script>
+    </script>
 </body>
 </html>
