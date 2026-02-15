@@ -2365,150 +2365,39 @@
         }
 
 
-        /* MOBİL - HER ŞEY EKRANA SIĞACAK */
-        @media (max-width: 768px) {
-            * { box-sizing: border-box; }
-            
-            #background-video { display: none !important; }
-            body { 
-                touch-action: pan-y; 
-                overflow-x: hidden !important;
-            }
-            
-            /* Universe & Final Piano - KÜÇÜK */
-            .section-3-content-container {
-                flex-direction: column !important;
-                gap: 0.5rem !important;
-                width: 98% !important;
-                padding: 5px !important;
-                bottom: 5% !important;
-            }
-            
-            .section-3-image-container {
-                width: 100% !important;
-                max-height: 25vh !important;
-            }
-            
-            .section-3-dream-piano-image {
-                width: 100% !important;
-                max-width: 90vw !important;
-                max-height: 25vh !important;
-                object-fit: contain !important;
-            }
-            
-            .section-3-universe-content {
-                width: 100% !important;
-                max-height: 30vh !important;
-                padding: 0.8rem !important;
-                overflow-y: auto !important;
-            }
-            
-            .text-block {
-                font-size: 0.75rem !important;
-                line-height: 1.4 !important;
-            }
-            
-            .story-text {
-                font-size: 0.75rem !important;
-                line-height: 1.4 !important;
-                margin-bottom: 0.5rem !important;
-            }
-            
-            .story-text-emphasis {
-                font-size: 0.8rem !important;
-            }
-            
-            /* Notalar - GÖRSELLER KÜÇÜK */
-            .section-5-left-image, .section-5-right-image,
-            .section-6-left-image, .section-6-right-image,
-            .section-7-right-image,
-            .section-8-left-image, .section-8-right-image,
-            .section-9-left-image, .section-9-right-image,
-            .section-10-left-image, .section-10-right-image,
-            .section-11-right-image,
-            .section-12-left-image, .section-12-right-image,
-            .section-13-left-image, .section-13-right-image,
-            .section-14-left-image, .section-14-right-image,
-            .section-15-right-image,
-            .section-16-left-image, .section-16-right-image,
-            .section-17-left-image, .section-17-right-image {
-                max-width: 40vw !important;
-                max-height: 25vh !important;
-                object-fit: contain !important;
-            }
-            
-            /* Notalar - TEXT KÜÇÜK */
-            .section-text-content {
-                font-size: 0.75rem !important;
-                padding: 0.5rem !important;
-                max-width: 90vw !important;
-            }
-            
-            /* Video */
-            .video-container {
-                max-width: 95% !important;
-                padding: 5px !important;
-            }
-            
-            .piano-video {
-                max-height: 30vh !important;
-            }
-            
-            /* Gallery */
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.3rem !important;
-                padding: 5px !important;
-            }
-            
-            .gallery-card {
-                height: 20vh !important;
-            }
-            
-            /* Magic */
-            .section-magic-content {
-                padding: 1rem 0.5rem !important;
-            }
-            
-            .magic-title {
-                font-size: 1.1rem !important;
-            }
-            
-            .magic-text {
-                font-size: 0.75rem !important;
-                line-height: 1.4 !important;
-            }
-            
-            /* Genel */
-            .section-content {
-                padding: 15px 8px !important;
-            }
-            
-            .section-title {
-                font-size: 1.1rem !important;
-                margin-bottom: 0.5rem !important;
-            }
-            
-            h2 {
-                font-size: 1.1rem !important;
-            }
-        }
-
         #section-19.active #ocean-canvas-19,
         #section-20.active #ocean-canvas-20 {
             opacity: 1;
         }
 
-        .ar-up, .ar-down {
-            position: fixed; left: 15px; z-index: 9999;
-            width: 26px; height: 26px;
-            border-left: 2.5px solid rgba(255,255,255,0.85);
-            border-bottom: 2.5px solid rgba(255,255,255,0.85);
-            cursor: pointer; opacity: 0.75; transition: opacity 0.3s;
+        @media (max-width: 768px) {
+            #background-video { display: none !important; }
+            .section-3-content-container { flex-direction: column !important; gap: 0.5rem !important; }
+            .section-3-image-container, .section-3-dream-piano-image { max-height: 30vh !important; }
+            .section-3-universe-content { max-height: 35vh !important; overflow-y: auto !important; }
+            .story-text { font-size: 0.85rem !important; }
+            .section-5-left-image, .section-5-right-image,
+            .section-6-left-image, .section-6-right-image,
+            .section-7-right-image, .section-8-left-image, .section-8-right-image,
+            .section-9-left-image, .section-9-right-image,
+            .section-10-left-image, .section-10-right-image,
+            .section-11-right-image, .section-12-left-image, .section-12-right-image,
+            .section-13-left-image, .section-13-right-image,
+            .section-14-left-image, .section-14-right-image,
+            .section-15-right-image, .section-16-left-image, .section-16-right-image,
+            .section-17-left-image, .section-17-right-image {
+                max-width: 45vw !important; max-height: 30vh !important;
+            }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.5rem !important; }
         }
-        .ar-up { top: 15px; transform: rotate(135deg); }
-        .ar-down { bottom: 15px; transform: rotate(-45deg); }
-        .ar-up:hover, .ar-down:hover, .ar-up:active, .ar-down:active { opacity: 1; }
+
+        .ok-up, .ok-down {
+            position: fixed; left: 15px; z-index: 9999; width: 26px; height: 26px;
+            border-left: 2.5px solid #fff; border-bottom: 2.5px solid #fff;
+            cursor: pointer; opacity: 0.7;
+        }
+        .ok-up { top: 15px; transform: rotate(135deg); }
+        .ok-down { bottom: 15px; transform: rotate(-45deg); }
     </style>
 </head>
 <body>
@@ -2585,8 +2474,7 @@
         </div>
     </section>
 
-    <!-- Section 3
-    <!-- Section 3 - The Universe with Features -->
+    <!-- Section 3<!-- Section 3 - The Universe with Features -->
     <section id="section-3" class="content-section">
         <canvas id="ocean-canvas-3"></canvas>
         
@@ -2656,37 +2544,45 @@
     <!-- Section 19 - Final Piano Story -->
     <section id="section-19" class="content-section">
         <canvas id="ocean-canvas-19"></canvas>
-        
         <div class="section-3-content-container">
             <div class="section-3-image-container">
-                <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/MYDREAMPIANO.JPEG" 
-                     alt="Piano Final Story" 
-                     class="section-3-dream-piano-image" />
+                <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/MYDREAMPIANO.JPEG" alt="Piano" class="section-3-dream-piano-image" />
             </div>
-            
             <div class="section-3-universe-content">
                 <div class="text-block">
-                    <p class="story-text">At first glance, perhaps this may seem like just a piano. But with each key you touch, you realize this is a journey.</p>
-                    <p class="story-text">This piano plays seven moments but actually tells a single story. The story of life. The story of love.</p>
-                    <p class="story-text-emphasis">Each note a stage, each key a stop.</p>
+                    <p class="story-text">At first glance, this may seem like just a piano. But with each key, you realize this is a journey.</p>
+                    <p class="story-text-emphasis">This piano tells a single story. The story of life. The story of love.</p>
                 </div>
             </div>
         </div>
-        
-        <div style="position: absolute; bottom: 4%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 5; width: 90%;">
-            <a href="https://superrare.com/artwork/eth/0x678dC78df1AD075C9784011998899FB1F0c09789/5" 
-               target="_blank" 
-               style="display: inline-block; font-size: clamp(0.7rem, 2vw, 1.2rem); font-weight: 600; color: #4dd0e1; text-decoration: none; padding: 0.6rem 1.2rem; background: rgba(77, 208, 225, 0.1); border: 2px solid rgba(77, 208, 225, 0.4); border-radius: 25px;">
-                compose with water, love & sound
-            </a>
+        <div style="position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 5;">
+            <a href="https://superrare.com/artwork/eth/0x678dC78df1AD075C9784011998899FB1F0c09789/5" target="_blank" style="display: inline-block; font-size: clamp(0.8rem, 2vw, 1.3rem); color: #4dd0e1; text-decoration: none; padding: 0.7rem 1.5rem; background: rgba(77, 208, 225, 0.1); border: 2px solid rgba(77, 208, 225, 0.4); border-radius: 25px;">compose with water & love</a>
         </div>
     </section>
 
-    <!-- Section 20 - Empty Ocean -->
+
+    <!-- Section 20 - Water Based Universe -->
     <section id="section-20" class="content-section">
+        <canvas id="ocean-canvas-20"></canvas>
+        <div style="position: absolute; top: 5%; left: 50%; transform: translateX(-50%); width: 90%; text-align: center; z-index: 15;">
+            <h2 style="font-size: clamp(1rem, 3vw, 1.6rem); color: #4dd0e1; margin: 0;">How is this universe completely WATER BASED?</h2>
+        </div>
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; z-index: 10;">
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                <div style="flex: 1; min-width: 220px; max-width: 450px; padding: 1rem; background: rgba(0,0,0,0.7); border-radius: 10px;">
+                    <p class="story-text" style="font-size: clamp(0.8rem, 1.5vw, 1rem);">Built on real water simulation using Su'rreal piano colors and traditional painting techniques.</p>
+                </div>
+                <div style="flex: 1; min-width: 220px; max-width: 550px;">
+                    <video style="width: 100%; max-height: 50vh; border-radius: 10px;" autoplay loop muted playsinline preload="metadata">
+                        <source src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/vm.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Section 18 - Gallery -->
+
+<!-- Section 18 - GALLERY -->
     <section id="section-18" class="content-section gallery-section">
         <div class="gallery-grid">
             <div class="gallery-card"><img src="https://picsum.photos/id/660/1200/1200" alt="1"></div>
@@ -2707,7 +2603,7 @@
         </div>
     </section>
 
-    <!-- Section 4 - The Magic -->
+<!-- Section 4 - THE MAGIC -->
     <section id="section-4" class="content-section">
         <div class="section-content section-magic-content">
             <h2 class="section-title magic-title">The Magic</h2>
@@ -2755,7 +2651,7 @@
         </div>
     </section>
 
-    <!-- Section 5 - C/DO Note -->
+<!-- Section 5 - C/DO Note -->
     <section id="section-5" class="content-section">
         
         <!-- Left side image - ABSOLUTE -->
@@ -2912,7 +2808,7 @@
         </div>
     </section>
 
-    <!-- Section 6 - Two Column: 2.DO and 3.DO -->
+<!-- Section 6 - Two Column: 2.DO and 3.DO -->
     <section id="section-6" class="content-section">
         
         <!-- Left side image - 8.c4.png -->
@@ -2984,7 +2880,7 @@
         </div>
     </section>
 
-    <!-- Section 7 - RE (2nd Key) -->
+<!-- Section 7 - RE (2nd Key) -->
     <section id="section-7" class="content-section">
         
         <!-- Right side image - 2.D3.png -->
@@ -3029,7 +2925,7 @@
         </div>
     </section>
 
-    <!-- Section 8 - RE 9th Key -->
+<!-- Section 8 - RE 9th Key -->
     <section id="section-8" class="content-section">
         
         <!-- Left side image - 9.d4düz.png -->
@@ -3097,7 +2993,7 @@
         </div>
     </section>
 
-    <!-- Section 9 - 3.RE 16th Key (Locked) -->
+<!-- Section 9 - 3.RE 16th Key (Locked) -->
     <section id="section-9" class="content-section">
         
         <!-- Left side image - 16d5düz.png -->
@@ -3131,7 +3027,7 @@
         </div>
     </section>
 
-    <!-- Section 10 - 1.MI E 3rd key -->
+<!-- Section 10 - 1.MI E 3rd key -->
     <section id="section-10" class="content-section">
         
         <!-- Left side image - e3düz.png -->
@@ -3211,7 +3107,7 @@
         </div>
     </section>
 
-    <!-- Section 11 - 2.MI E 10th key -->
+<!-- Section 11 - 2.MI E 10th key -->
     <section id="section-11" class="content-section">
         
         <!-- Right side image - 10.E4.png -->
@@ -3246,7 +3142,7 @@
         </div>
     </section>
 
-    <!-- Section 12 - 1.FA F 4th key -->
+<!-- Section 12 - 1.FA F 4th key -->
     <section id="section-12" class="content-section">
         
         <!-- Right side image - f3.png -->
@@ -3284,7 +3180,7 @@
         </div>
     </section>
 
-    <!-- Section 13 - 2.FA F 11th key -->
+<!-- Section 13 - 2.FA F 11th key -->
     <section id="section-13" class="content-section">
         
         <!-- Left side image - 11.F4.düz.png -->
@@ -3383,7 +3279,7 @@
         </div>
     </section>
 
-    <!-- Section 14 - 1.SOL G 5th key -->
+<!-- Section 14 - 1.SOL G 5th key -->
     <section id="section-14" class="content-section">
         
         <!-- Right side image - 5.G3.png -->
@@ -3433,7 +3329,7 @@
         </div>
     </section>
 
-    <!-- Section 15 - 2.SOL G 12th key -->
+<!-- Section 15 - 2.SOL G 12th key -->
     <section id="section-15" class="content-section">
         
         <!-- Right side image - 12.G4.png -->
@@ -3480,7 +3376,7 @@
         </div>
     </section>
 
-    <!-- Section 16 - 1.SI B 7th key -->
+<!-- Section 16 - 1.SI B 7th key -->
     <section id="section-16" class="content-section">
         
         <!-- Left side image - 7.B3.düz.png -->
@@ -3561,7 +3457,7 @@
         </div>
     </section>
 
-    <!-- Section 17 - 2.SI B 14th key FIRE -->
+<!-- Section 17 - 2.SI B 14th key FIRE -->
     <section id="section-17" class="content-section">
         
         <!-- Left side image - 14.B4.düz.png -->
@@ -3633,7 +3529,7 @@
         </div>
     </section>
 
-    <!-- Three.js -->
+<!-- Three.js -->
     <script type="importmap">
     {
       "imports": {
@@ -3751,13 +3647,6 @@
         const section18 = document.getElementById('section-18');
         const section19 = document.getElementById('section-19');
         const section20 = document.getElementById('section-20');
-        const section21 = document.getElementById('section-21');
-        const section22 = document.getElementById('section-22');
-        const section23 = document.getElementById('section-23');
-        const section24 = document.getElementById('section-24');
-        const section25 = document.getElementById('section-25');
-        const section26 = document.getElementById('section-26');
-        const section27 = document.getElementById('section-27');
         const heroSection = document.getElementById('hero-section');
 
         // Get all canvases and cameras for zoom effects
@@ -3767,51 +3656,29 @@
         const canvas5 = document.getElementById('ocean-canvas-5');
         const canvas6 = document.getElementById('ocean-canvas-6');
         const canvas7 = document.getElementById('ocean-canvas-7');
-        const canvas19 = document.getElementById('ocean-canvas-19');
+                const canvas19 = document.getElementById('ocean-canvas-19');
         const canvas20 = document.getElementById('ocean-canvas-20');
         const canvas8 = document.getElementById('ocean-canvas-8');
 
         // Handle scroll for all sections
 
-        // MOBİL TOUCH
-        let tY = 0;
-        document.addEventListener('touchstart', e => { tY = e.touches[0].clientY; }, {passive: true});
-        document.addEventListener('touchend', e => {
-            const diff = tY - e.changedTouches[0].clientY;
-            if (Math.abs(diff) > 40) {
-                if (diff > 0 && currentSection < 20) {
-                    transitionToSection(currentSection + 1);
-                } else if (diff < 0 && currentSection > 1) {
-                    if (currentSection === 2) {
-                        zoomProgress = maxZoom - 1;
-                        transitionToSection(1);
-                    } else {
-                        transitionToSection(currentSection - 1);
-                    }
-                }
+        let tY=0;
+        document.addEventListener('touchstart',e=>{tY=e.touches[0].clientY},{passive:true});
+        document.addEventListener('touchend',e=>{
+            const d=tY-e.changedTouches[0].clientY;
+            if(Math.abs(d)>50){
+                if(d>0&&currentSection<20) transitionToSection(currentSection+1);
+                else if(d<0&&currentSection>1) transitionToSection(currentSection===2?1:currentSection-1);
             }
-        }, {passive: true});
+        },{passive:true});
 
-
-        function gU() {
-            if (isTransitioning) return;
-            if (currentSection > 1) {
-                if (currentSection === 2) { zoomProgress = maxZoom - 1; transitionToSection(1); }
-                else { transitionToSection(currentSection - 1); }
-            }
-        }
-        function gD() {
-            if (isTransitioning) return;
-            if (currentSection === 1) zoomProgress = maxZoom;
-            if (currentSection < 20) transitionToSection(currentSection + 1);
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            const u = document.getElementById('au');
-            const d = document.getElementById('ad');
-            if (u) { u.onclick = gU; u.ontouchend = e => { e.preventDefault(); gU(); }; }
-            if (d) { d.onclick = gD; d.ontouchend = e => { e.preventDefault(); gD(); }; }
+        function up(){if(!isTransitioning&&currentSection>1)transitionToSection(currentSection===2?1:currentSection-1);}
+        function dn(){if(!isTransitioning&&currentSection<20)transitionToSection(currentSection+1);}
+        document.addEventListener('DOMContentLoaded',()=>{
+            const u=document.getElementById('ou'),d=document.getElementById('od');
+            if(u){u.onclick=up;u.ontouchend=e=>{e.preventDefault();up()};}
+            if(d){d.onclick=dn;d.ontouchend=e=>{e.preventDefault();dn()};}
         });
-
         function handleWheel(e) {
             e.preventDefault();
             
@@ -4927,6 +4794,6 @@
         });
     });
     </script>
-<div class="ar-up" id="au"></div><div class="ar-down" id="ad"></div>
+<div class="ok-up" id="ou"></div><div class="ok-down" id="od"></div>
 </body>
 </html>
