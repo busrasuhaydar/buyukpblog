@@ -2365,91 +2365,150 @@
         }
 
 
-        /* MOBİL RESPONSIVE - GÖRSELLER */
+        /* MOBİL - HER ŞEY EKRANA SIĞACAK */
         @media (max-width: 768px) {
-            #background-video { display: none !important; }
-            body { touch-action: pan-y; }
+            * { box-sizing: border-box; }
             
-            /* Universe ve Final Piano */
+            #background-video { display: none !important; }
+            body { 
+                touch-action: pan-y; 
+                overflow-x: hidden !important;
+            }
+            
+            /* Universe & Final Piano - KÜÇÜK */
             .section-3-content-container {
                 flex-direction: column !important;
-                gap: 1rem !important;
-                padding: 10px !important;
+                gap: 0.5rem !important;
+                width: 98% !important;
+                padding: 5px !important;
+                bottom: 5% !important;
             }
             
             .section-3-image-container {
-                max-width: 100% !important;
-                max-height: 35vh !important;
+                width: 100% !important;
+                max-height: 25vh !important;
             }
             
             .section-3-dream-piano-image {
+                width: 100% !important;
                 max-width: 90vw !important;
-                max-height: 35vh !important;
+                max-height: 25vh !important;
                 object-fit: contain !important;
             }
             
             .section-3-universe-content {
-                max-width: 100% !important;
-                max-height: 45vh !important;
-                padding: 1rem !important;
+                width: 100% !important;
+                max-height: 30vh !important;
+                padding: 0.8rem !important;
+                overflow-y: auto !important;
             }
             
             .text-block {
-                font-size: 0.85rem !important;
+                font-size: 0.75rem !important;
+                line-height: 1.4 !important;
             }
             
-            /* Notalar - Görseller */
+            .story-text {
+                font-size: 0.75rem !important;
+                line-height: 1.4 !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .story-text-emphasis {
+                font-size: 0.8rem !important;
+            }
+            
+            /* Notalar - GÖRSELLER KÜÇÜK */
             .section-5-left-image, .section-5-right-image,
             .section-6-left-image, .section-6-right-image,
-            .section-7-right-image, 
+            .section-7-right-image,
             .section-8-left-image, .section-8-right-image,
             .section-9-left-image, .section-9-right-image,
             .section-10-left-image, .section-10-right-image,
-            .section-11-right-image, 
+            .section-11-right-image,
             .section-12-left-image, .section-12-right-image,
             .section-13-left-image, .section-13-right-image,
             .section-14-left-image, .section-14-right-image,
-            .section-15-right-image, 
+            .section-15-right-image,
             .section-16-left-image, .section-16-right-image,
             .section-17-left-image, .section-17-right-image {
-                max-width: 45vw !important;
-                max-height: 40vh !important;
+                max-width: 40vw !important;
+                max-height: 25vh !important;
                 object-fit: contain !important;
             }
             
+            /* Notalar - TEXT KÜÇÜK */
+            .section-text-content {
+                font-size: 0.75rem !important;
+                padding: 0.5rem !important;
+                max-width: 90vw !important;
+            }
+            
             /* Video */
-            .video-container { max-width: 100% !important; }
-            .piano-video { max-height: 35vh !important; }
+            .video-container {
+                max-width: 95% !important;
+                padding: 5px !important;
+            }
+            
+            .piano-video {
+                max-height: 30vh !important;
+            }
             
             /* Gallery */
-            .gallery-grid { 
-                grid-template-columns: repeat(2, 1fr) !important; 
-                gap: 0.5rem !important; 
-                padding: 10px !important;
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.3rem !important;
+                padding: 5px !important;
+            }
+            
+            .gallery-card {
+                height: 20vh !important;
+            }
+            
+            /* Magic */
+            .section-magic-content {
+                padding: 1rem 0.5rem !important;
+            }
+            
+            .magic-title {
+                font-size: 1.1rem !important;
+            }
+            
+            .magic-text {
+                font-size: 0.75rem !important;
+                line-height: 1.4 !important;
             }
             
             /* Genel */
-            .section-content { padding: 20px 10px !important; }
-            .section-title { font-size: 1.2rem !important; }
-            .story-text { font-size: 0.85rem !important; line-height: 1.6 !important; }
+            .section-content {
+                padding: 15px 8px !important;
+            }
+            
+            .section-title {
+                font-size: 1.1rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            h2 {
+                font-size: 1.1rem !important;
+            }
         }
-
-        .arrow-up, .arrow-down {
-            position: fixed; left: 20px; z-index: 9999;
-            width: 28px; height: 28px;
-            border-left: 3px solid rgba(255,255,255,0.8);
-            border-bottom: 3px solid rgba(255,255,255,0.8);
-            cursor: pointer; opacity: 0.7; transition: opacity 0.3s;
-        }
-        .arrow-up { top: 20px; transform: rotate(135deg); }
-        .arrow-down { bottom: 20px; transform: rotate(-45deg); }
-        .arrow-up:hover, .arrow-down:hover { opacity: 1; }
-        @media (max-width: 768px) { .arrow-up, .arrow-down { width: 24px; height: 24px; } }
 
         #section-19.active #ocean-canvas-19,
         #section-20.active #ocean-canvas-20 {
             opacity: 1;
         }
+
+        .ar-up, .ar-down {
+            position: fixed; left: 15px; z-index: 9999;
+            width: 26px; height: 26px;
+            border-left: 2.5px solid rgba(255,255,255,0.85);
+            border-bottom: 2.5px solid rgba(255,255,255,0.85);
+            cursor: pointer; opacity: 0.75; transition: opacity 0.3s;
+        }
+        .ar-up { top: 15px; transform: rotate(135deg); }
+        .ar-down { bottom: 15px; transform: rotate(-45deg); }
+        .ar-up:hover, .ar-down:hover, .ar-up:active, .ar-down:active { opacity: 1; }
     </style>
 </head>
 <body>
@@ -2526,6 +2585,7 @@
         </div>
     </section>
 
+    <!-- Section 3
     <!-- Section 3 - The Universe with Features -->
     <section id="section-3" class="content-section">
         <canvas id="ocean-canvas-3"></canvas>
@@ -2593,7 +2653,61 @@
         </div>
     </section>
 
-    <!-- Section 4 -->
+    <!-- Section 19 - Final Piano Story -->
+    <section id="section-19" class="content-section">
+        <canvas id="ocean-canvas-19"></canvas>
+        
+        <div class="section-3-content-container">
+            <div class="section-3-image-container">
+                <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/MYDREAMPIANO.JPEG" 
+                     alt="Piano Final Story" 
+                     class="section-3-dream-piano-image" />
+            </div>
+            
+            <div class="section-3-universe-content">
+                <div class="text-block">
+                    <p class="story-text">At first glance, perhaps this may seem like just a piano. But with each key you touch, you realize this is a journey.</p>
+                    <p class="story-text">This piano plays seven moments but actually tells a single story. The story of life. The story of love.</p>
+                    <p class="story-text-emphasis">Each note a stage, each key a stop.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="position: absolute; bottom: 4%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 5; width: 90%;">
+            <a href="https://superrare.com/artwork/eth/0x678dC78df1AD075C9784011998899FB1F0c09789/5" 
+               target="_blank" 
+               style="display: inline-block; font-size: clamp(0.7rem, 2vw, 1.2rem); font-weight: 600; color: #4dd0e1; text-decoration: none; padding: 0.6rem 1.2rem; background: rgba(77, 208, 225, 0.1); border: 2px solid rgba(77, 208, 225, 0.4); border-radius: 25px;">
+                compose with water, love & sound
+            </a>
+        </div>
+    </section>
+
+    <!-- Section 20 - Empty Ocean -->
+    <section id="section-20" class="content-section">
+    </section>
+
+    <!-- Section 18 - Gallery -->
+    <section id="section-18" class="content-section gallery-section">
+        <div class="gallery-grid">
+            <div class="gallery-card"><img src="https://picsum.photos/id/660/1200/1200" alt="1"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/669/1200/1200" alt="2"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/823/1200/1200" alt="3"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/64/1200/1200" alt="4"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/836/1200/1200" alt="5"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/1027/1200/1200" alt="6"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/646/1200/1200" alt="7"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/10/1200/1200" alt="8"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/20/1200/1200" alt="9"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/30/1200/1200" alt="10"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/40/1200/1200" alt="11"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/50/1200/1200" alt="12"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/60/1200/1200" alt="13"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/70/1200/1200" alt="14"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/80/1200/1200" alt="15"></div>
+        </div>
+    </section>
+
+    <!-- Section 4 - The Magic -->
     <section id="section-4" class="content-section">
         <div class="section-content section-magic-content">
             <h2 class="section-title magic-title">The Magic</h2>
@@ -3519,115 +3633,6 @@
         </div>
     </section>
 
-    <!-- Section 18 - Empty Ocean -->
-    <section id="section-18" class="content-section gallery-section">
-        <div class="gallery-grid">
-            <div class="gallery-card"><img src="https://picsum.photos/id/660/1200/1200" alt="1"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/669/1200/1200" alt="2"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/823/1200/1200" alt="3"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/64/1200/1200" alt="4"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/836/1200/1200" alt="5"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/1027/1200/1200" alt="6"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/646/1200/1200" alt="7"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/10/1200/1200" alt="8"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/20/1200/1200" alt="9"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/30/1200/1200" alt="10"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/40/1200/1200" alt="11"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/50/1200/1200" alt="12"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/60/1200/1200" alt="13"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/70/1200/1200" alt="14"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/80/1200/1200" alt="15"></div>
-        </div>
-    </section>
-
-        <!-- Section 19 - Final Piano Story -->
-    <section id="section-19" class="content-section">
-        <canvas id="ocean-canvas-19"></canvas>
-        
-        <div class="section-3-content-container">
-            <div class="section-3-image-container">
-                <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/MYDREAMPIANO.JPEG" 
-                     alt="Piano Final Story" 
-                     class="section-3-dream-piano-image" />
-            </div>
-            
-            <div class="section-3-universe-content">
-                <div class="text-block">
-                    <p class="story-text">At first glance, perhaps this may seem like just a piano. 16 keys, colors, sounds. But with each key you touch, you realize this is a journey.</p>
-                    <p class="story-text">Because isn't love like this too? A beginning, a potential, a moment carrying all colors in their brightest state.</p>
-                    <p class="story-text-emphasis">This piano plays seven moments but actually tells a single story. The story of life. The story of love.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div style="position: absolute; bottom: 6%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 5;">
-            <a href="https://superrare.com/artwork/eth/0x678dC78df1AD075C9784011998899FB1F0c09789/5" 
-               target="_blank" 
-               style="display: inline-block; font-size: clamp(0.9rem, 2vw, 1.4rem); font-weight: 600; color: #4dd0e1; text-decoration: none; padding: 0.8rem 1.5rem; background: rgba(77, 208, 225, 0.1); border: 2px solid rgba(77, 208, 225, 0.4); border-radius: 30px;">
-                - compose by painting the water with love, color and sound! -
-            </a>
-        </div>
-    </section>
-
-
-        <!-- Section 20 - Water Based Universe -->
-    <section id="section-20" class="content-section">
-        <canvas id="ocean-canvas-20"></canvas>
-        
-        <div style="position: absolute; top: 5%; left: 50%; transform: translateX(-50%); width: 95%; text-align: center; z-index: 15; padding: 0 10px;">
-            <h2 style="font-size: clamp(1.1rem, 3vw, 1.8rem); color: #4dd0e1; text-shadow: 0 0 20px rgba(77, 208, 225, 0.6); margin: 0; line-height: 1.3;">
-                How is the entire artwork, the entire universe completely WATER BASED?
-            </h2>
-        </div>
-        
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 95%; max-width: 1200px; z-index: 10; padding: 0 10px;">
-            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; align-items: flex-start;">
-                <div style="flex: 1; min-width: 250px; max-width: 500px; max-height: 55vh; overflow-y: auto; padding: 1.2rem; background: rgba(0, 0, 0, 0.7); border-radius: 12px; backdrop-filter: blur(15px); border: 1px solid rgba(77, 208, 225, 0.3);">
-                    <p class="story-text" style="font-size: clamp(0.85rem, 1.5vw, 1rem); margin-bottom: 0.8rem;">This universe is built on a real physical water simulation.</p>
-                    <p class="story-text" style="font-size: clamp(0.85rem, 1.5vw, 1rem); margin-bottom: 0.8rem;">In the background, it takes the colors and shades found ONLY on the Su'rreal piano, and based on Su's special traditional painting techniques, it creates generative art.</p>
-                    <p class="story-text-emphasis" style="font-size: clamp(0.9rem, 1.6vw, 1.1rem); margin-bottom: 0.6rem;">In summary,</p>
-                    <p class="story-text" style="font-size: clamp(0.85rem, 1.5vw, 1rem);">Based on Su's special traditional art techniques, it creates generative art that is conscious, deliberately limited, yet holds infinite possibilities within itself.</p>
-                </div>
-                
-                <div style="flex: 1; min-width: 250px; max-width: 600px;">
-                    <video style="width: 100%; max-height: 55vh; border-radius: 12px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); border: 2px solid rgba(77, 208, 225, 0.3);" 
-                           autoplay loop muted playsinline preload="metadata">
-                        <source src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/vm.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Section 21 - Empty Ocean -->
-    <section id="section-21" class="content-section">
-    </section>
-
-    <!-- Section 22 - Empty Ocean -->
-    <section id="section-22" class="content-section">
-    </section>
-
-    <!-- Section 23 - Empty Ocean -->
-    <section id="section-23" class="content-section">
-    </section>
-
-    <!-- Section 24 - Empty Ocean -->
-    <section id="section-24" class="content-section">
-    </section>
-
-    <!-- Section 25 - Empty Ocean -->
-    <section id="section-25" class="content-section">
-    </section>
-
-    <!-- Section 26 - Empty Ocean -->
-    <section id="section-26" class="content-section">
-    </section>
-
-    <!-- Section 27 - Empty Ocean -->
-    <section id="section-27" class="content-section">
-    </section>
-
     <!-- Three.js -->
     <script type="importmap">
     {
@@ -3768,12 +3773,12 @@
 
         // Handle scroll for all sections
 
-        // MOBİL TOUCH - BASIT VE ÇALIŞAN
+        // MOBİL TOUCH
         let tY = 0;
         document.addEventListener('touchstart', e => { tY = e.touches[0].clientY; }, {passive: true});
         document.addEventListener('touchend', e => {
             const diff = tY - e.changedTouches[0].clientY;
-            if (Math.abs(diff) > 50) {
+            if (Math.abs(diff) > 40) {
                 if (diff > 0 && currentSection < 20) {
                     transitionToSection(currentSection + 1);
                 } else if (diff < 0 && currentSection > 1) {
@@ -4922,6 +4927,6 @@
         });
     });
     </script>
-<div class="arrow-up" id="au"></div><div class="arrow-down" id="ad"></div>
+<div class="ar-up" id="au"></div><div class="ar-down" id="ad"></div>
 </body>
 </html>
