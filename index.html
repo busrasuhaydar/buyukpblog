@@ -2,7 +2,9 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>SU'rreal Piano SIMULATION - Blog Hero</title>
     <style>
         * {
@@ -28,11 +30,21 @@
             opacity: 1;
         }
 
+        /* Mobil ve tablet cihazlarda arkaplan videosunu gizle (performans için) */
+        @media (max-width: 1024px) {
+            #background-video {
+                display: none !important;
+            }
+        }
+
         body {
             font-family: 'Inter', 'Segoe UI', sans-serif;
             overflow-x: hidden;
             background: #000;
             color: #fff;
+            touch-action: pan-y; /* Dikey scroll'a izin ver */
+            -webkit-tap-highlight-color: transparent; /* Tap highlight'ı kaldır */
+            -webkit-touch-callout: none; /* iOS callout'u kaldır */
         }
 
         /* Professional Image Lightbox System */
@@ -41,8 +53,19 @@
             transition: opacity 0.3s ease;
         }
 
+        /* Note page images - no zoom cursor, no pointer events */
+        img[class*="section-"][class*="-image"] {
+            cursor: default !important;
+            pointer-events: none !important;
+        }
+
         img:hover {
             opacity: 0.9;
+        }
+
+        /* Note page images - no hover effect */
+        img[class*="section-"][class*="-image"]:hover {
+            opacity: 1 !important;
         }
 
         /* Lightbox Modal */
@@ -306,21 +329,21 @@
         #next-section.active #concept-ocean-canvas,
         #section-3.active #ocean-canvas-3,
         #section-4.active #ocean-canvas-6,
-        #section-7.active #ocean-canvas-7,
-        #section-8.active #ocean-canvas-8,
-        #section-9.active #ocean-canvas-9,
+        #section-9.active #ocean-canvas-7,
+        #section-10.active #ocean-canvas-8,
+        #section-11.active #ocean-canvas-9,
+        #section-16.active #ocean-canvas-14,
+        #section-11.active #ocean-canvas-11,
+        #section-12.active #ocean-canvas-12,
+        #section-13.active #ocean-canvas-13,
         #section-14.active #ocean-canvas-14,
-        #section-9.active #ocean-canvas-11,
-        #section-10.active #ocean-canvas-12,
-        #section-11.active #ocean-canvas-13,
-        #section-12.active #ocean-canvas-14,
-        #section-13.active #ocean-canvas-15,
-        #section-14.active #ocean-canvas-16,
-        #section-15.active #ocean-canvas-17,
-        #section-16.active #ocean-canvas-18,
-        #section-17.active #ocean-canvas-19,
-        #section-18.active #ocean-canvas-5,
-        #section-19.active #ocean-canvas-4,
+        #section-15.active #ocean-canvas-15,
+        #section-16.active #ocean-canvas-16,
+        #section-17.active #ocean-canvas-17,
+        #section-18.active #ocean-canvas-18,
+        #section-19.active #ocean-canvas-19,
+        #section-20.active #ocean-canvas-5,
+        #section-21.active #ocean-canvas-4,
         #section-27.active #ocean-canvas-27,
         #section-28.active #ocean-canvas-28,
         #section-29.active #ocean-canvas-29 {
@@ -603,6 +626,35 @@
             transform: translate(-50%, -50%);
         }
 
+        /* Section-7 (Final Story) - Same layout as Section-4 */
+        #section-7 .section-3-content-container {
+            top: 45%;
+            bottom: auto;
+            transform: translate(-50%, -50%);
+            width: 88%;
+            max-width: 1500px;
+            align-items: center;
+        }
+
+        #section-7 .section-3-dream-piano-image {
+            max-height: 70vh;
+        }
+
+        #section-7 .section-3-universe-content {
+            max-height: 70vh;
+        }
+
+        #section-7.active .section-3-content-container {
+            opacity: 1;
+        }
+        
+        #section-7 .section-3-content-container {
+            top: 45%;
+            bottom: auto;
+            transform: translate(-50%, -50%);
+        }
+
+
         /* Left side - Dream Piano Image - NO background */
         .section-3-image-container {
             flex: 1;
@@ -739,10 +791,12 @@
             scroll-behavior: smooth;
             position: relative;
             isolation: isolate;
+            -webkit-overflow-scrolling: touch; /* iOS smooth scroll */
+            overscroll-behavior: contain; /* Scroll içeride kalsın */
         }
 
         /* Section 17 - Both side images + red fire highlights */
-        .section-17-left-image {
+        .section-19-left-image {
             position: fixed !important;
             left: 0 !important;
             right: 0 !important;
@@ -758,7 +812,7 @@
             display: none !important;
         }
 
-        .section-17-right-image {
+        .section-19-right-image {
             position: fixed !important;
             left: 0 !important;
             right: 0 !important;
@@ -774,8 +828,8 @@
             display: none !important;
         }
 
-        #section-19.active .section-17-left-image,
-        #section-19.active .section-17-right-image {
+        #section-21.active .section-19-left-image,
+        #section-21.active .section-19-right-image {
             display: block !important;
         }
 
@@ -800,36 +854,36 @@
         }
 
         @media (max-width: 1600px) {
-            .section-17-left-image {
+            .section-19-left-image {
                 transform: translate(calc(-450px - 80px), -50%) !important;
                 width: 320px !important;
             }
-            .section-17-right-image {
+            .section-19-right-image {
                 transform: translate(calc(450px + 80px), -50%) !important;
                 width: 320px !important;
             }
         }
 
         @media (max-width: 1400px) {
-            .section-17-left-image {
+            .section-19-left-image {
                 transform: translate(calc(-450px - 60px), -50%) !important;
                 width: 280px !important;
             }
-            .section-17-right-image {
+            .section-19-right-image {
                 transform: translate(calc(450px + 60px), -50%) !important;
                 width: 280px !important;
             }
         }
 
         @media (max-width: 1200px) {
-            .section-17-left-image,
-            .section-17-right-image {
-                display: none !important;
+            .section-19-left-image,
+            .section-19-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
             }
         }
 
         /* Section 16 - Both side images + green highlights */
-        .section-16-left-image {
+        .section-18-left-image {
             position: fixed !important;
             left: 0 !important;
             right: 0 !important;
@@ -845,6 +899,112 @@
             display: none !important;
         }
 
+        .section-18-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 75vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+        }
+
+        #section-20.active .section-18-left-image,
+        #section-20.active .section-18-right-image {
+            display: block !important;
+        }
+
+        /* Green highlight text for Section 16 */
+        .section-16-green {
+            color: #00ff88 !important;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+
+        @media (max-width: 1600px) {
+            .section-18-left-image {
+                transform: translate(calc(-450px - 80px), -50%) !important;
+                width: 320px !important;
+            }
+            .section-18-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-18-left-image {
+                transform: translate(calc(-450px - 60px), -50%) !important;
+                width: 280px !important;
+            }
+            .section-18-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-18-left-image,
+            .section-18-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 15 - Single right image like Section 7 */
+        .section-17-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 75vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+        }
+
+        #section-19.active .section-17-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-17-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-17-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-17-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 14 - Purple highlight */
+        .section-14-purple {
+            color: #b366ff !important;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(179, 102, 255, 0.5);
+        }
+
+        /* Section 14 - Single right image like Section 7 */
         .section-16-right-image {
             position: fixed !important;
             left: 0 !important;
@@ -861,23 +1021,11 @@
             display: none !important;
         }
 
-        #section-18.active .section-16-left-image,
         #section-18.active .section-16-right-image {
             display: block !important;
         }
 
-        /* Green highlight text for Section 16 */
-        .section-16-green {
-            color: #00ff88 !important;
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-        }
-
         @media (max-width: 1600px) {
-            .section-16-left-image {
-                transform: translate(calc(-450px - 80px), -50%) !important;
-                width: 320px !important;
-            }
             .section-16-right-image {
                 transform: translate(calc(450px + 80px), -50%) !important;
                 width: 320px !important;
@@ -885,10 +1033,6 @@
         }
 
         @media (max-width: 1400px) {
-            .section-16-left-image {
-                transform: translate(calc(-450px - 60px), -50%) !important;
-                width: 280px !important;
-            }
             .section-16-right-image {
                 transform: translate(calc(450px + 60px), -50%) !important;
                 width: 280px !important;
@@ -896,98 +1040,8 @@
         }
 
         @media (max-width: 1200px) {
-            .section-16-left-image,
             .section-16-right-image {
-                display: none !important;
-            }
-        }
-
-        /* Section 15 - Single right image like Section 7 */
-        .section-15-right-image {
-            position: fixed !important;
-            left: 0 !important;
-            right: 0 !important;
-            margin: 0 auto !important;
-            top: 50% !important;
-            transform: translate(calc(450px + 100px), -50%) !important;
-            height: 75vh !important;
-            width: 400px !important;
-            object-fit: contain !important;
-            opacity: 1 !important;
-            z-index: 20 !important;
-            pointer-events: none !important;
-            display: none !important;
-        }
-
-        #section-17.active .section-15-right-image {
-            display: block !important;
-        }
-
-        @media (max-width: 1600px) {
-            .section-15-right-image {
-                transform: translate(calc(450px + 80px), -50%) !important;
-                width: 320px !important;
-            }
-        }
-
-        @media (max-width: 1400px) {
-            .section-15-right-image {
-                transform: translate(calc(450px + 60px), -50%) !important;
-                width: 280px !important;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .section-15-right-image {
-                display: none !important;
-            }
-        }
-
-        /* Section 14 - Purple highlight */
-        .section-14-purple {
-            color: #b366ff !important;
-            font-weight: 700;
-            text-shadow: 0 0 15px rgba(179, 102, 255, 0.5);
-        }
-
-        /* Section 14 - Single right image like Section 7 */
-        .section-14-right-image {
-            position: fixed !important;
-            left: 0 !important;
-            right: 0 !important;
-            margin: 0 auto !important;
-            top: 50% !important;
-            transform: translate(calc(450px + 100px), -50%) !important;
-            height: 75vh !important;
-            width: 400px !important;
-            object-fit: contain !important;
-            opacity: 1 !important;
-            z-index: 20 !important;
-            pointer-events: none !important;
-            display: none !important;
-        }
-
-        #section-16.active .section-14-right-image {
-            display: block !important;
-        }
-
-        @media (max-width: 1600px) {
-            .section-14-right-image {
-                transform: translate(calc(450px + 80px), -50%) !important;
-                width: 320px !important;
-            }
-        }
-
-        @media (max-width: 1400px) {
-            .section-14-right-image {
-                transform: translate(calc(450px + 60px), -50%) !important;
-                width: 280px !important;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .section-14-right-image {
-                display: none !important;
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
             }
         }
 
@@ -1030,12 +1084,12 @@
             background: rgba(77, 208, 225, 0.7);
         }
 
-        #section-15.active .section-13-main-box {
+        #section-17.active .section-13-main-box {
             opacity: 1;
         }
 
         /* Section 13 - Both side images - IN FRONT of boxes */
-        .section-13-left-image {
+        .section-15-left-image {
             position: fixed !important;
             left: 0 !important;
             right: 0 !important;
@@ -1051,7 +1105,7 @@
             display: none !important;
         }
 
-        .section-13-right-image {
+        .section-15-right-image {
             position: fixed !important;
             left: 0 !important;
             right: 0 !important;
@@ -1067,8 +1121,8 @@
             display: none !important;
         }
 
-        #section-15.active .section-13-left-image,
-        #section-15.active .section-13-right-image {
+        #section-17.active .section-15-left-image,
+        #section-17.active .section-15-right-image {
             display: block !important;
         }
 
@@ -1087,7 +1141,7 @@
             transition: opacity 0.8s ease-out 0.3s;
         }
 
-        #section-15.active .section-13-poems-container {
+        #section-17.active .section-13-poems-container {
             opacity: 1;
         }
 
@@ -1155,31 +1209,31 @@
         }
 
         @media (max-width: 1600px) {
-            .section-13-left-image {
+            .section-15-left-image {
                 transform: translate(calc(-450px - 80px), -50%) !important;
                 width: 320px !important;
             }
-            .section-13-right-image {
+            .section-15-right-image {
                 transform: translate(calc(450px + 80px), -50%) !important;
                 width: 320px !important;
             }
         }
 
         @media (max-width: 1400px) {
-            .section-13-left-image {
+            .section-15-left-image {
                 transform: translate(calc(-450px - 60px), -50%) !important;
                 width: 280px !important;
             }
-            .section-13-right-image {
+            .section-15-right-image {
                 transform: translate(calc(450px + 60px), -50%) !important;
                 width: 280px !important;
             }
         }
 
         @media (max-width: 1200px) {
-            .section-13-left-image,
-            .section-13-right-image {
-                display: none !important;
+            .section-15-left-image,
+            .section-15-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
             }
             
             .section-13-poems-container {
@@ -1188,6 +1242,104 @@
         }
 
         /* Section 12 - Single right image like Section 7 */
+        .section-14-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 75vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+        }
+
+        #section-16.active .section-14-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-14-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-14-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-14-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 11 - Single right image like Section 7 */
+        .section-13-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 75vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+        }
+
+        #section-15.active .section-13-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-13-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-13-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-13-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 10 - Both side images like Section 5 */
+        .section-12-left-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(-450px - 100px), -50%) !important;
+            height: 75vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+        }
+
         .section-12-right-image {
             position: fixed !important;
             left: 0 !important;
@@ -1204,11 +1356,16 @@
             display: none !important;
         }
 
+        #section-14.active .section-12-left-image,
         #section-14.active .section-12-right-image {
             display: block !important;
         }
 
         @media (max-width: 1600px) {
+            .section-12-left-image {
+                transform: translate(calc(-450px - 80px), -50%) !important;
+                width: 320px !important;
+            }
             .section-12-right-image {
                 transform: translate(calc(450px + 80px), -50%) !important;
                 width: 320px !important;
@@ -1216,6 +1373,10 @@
         }
 
         @media (max-width: 1400px) {
+            .section-12-left-image {
+                transform: translate(calc(-450px - 60px), -50%) !important;
+                width: 280px !important;
+            }
             .section-12-right-image {
                 transform: translate(calc(450px + 60px), -50%) !important;
                 width: 280px !important;
@@ -1223,12 +1384,29 @@
         }
 
         @media (max-width: 1200px) {
+            .section-12-left-image,
             .section-12-right-image {
-                display: none !important;
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
             }
         }
 
-        /* Section 11 - Single right image like Section 7 */
+        /* Section 9 - Locked content with side images */
+        .section-11-left-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(-450px - 100px), -50%) !important;
+            height: 75vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+        }
+
         .section-11-right-image {
             position: fixed !important;
             left: 0 !important;
@@ -1245,161 +1423,37 @@
             display: none !important;
         }
 
+        #section-13.active .section-11-left-image,
         #section-13.active .section-11-right-image {
             display: block !important;
         }
 
         @media (max-width: 1600px) {
-            .section-11-right-image {
-                transform: translate(calc(450px + 80px), -50%) !important;
-                width: 320px !important;
-            }
-        }
-
-        @media (max-width: 1400px) {
-            .section-11-right-image {
-                transform: translate(calc(450px + 60px), -50%) !important;
-                width: 280px !important;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .section-11-right-image {
-                display: none !important;
-            }
-        }
-
-        /* Section 10 - Both side images like Section 5 */
-        .section-10-left-image {
-            position: fixed !important;
-            left: 0 !important;
-            right: 0 !important;
-            margin: 0 auto !important;
-            top: 50% !important;
-            transform: translate(calc(-450px - 100px), -50%) !important;
-            height: 75vh !important;
-            width: 400px !important;
-            object-fit: contain !important;
-            opacity: 1 !important;
-            z-index: 20 !important;
-            pointer-events: none !important;
-            display: none !important;
-        }
-
-        .section-10-right-image {
-            position: fixed !important;
-            left: 0 !important;
-            right: 0 !important;
-            margin: 0 auto !important;
-            top: 50% !important;
-            transform: translate(calc(450px + 100px), -50%) !important;
-            height: 75vh !important;
-            width: 400px !important;
-            object-fit: contain !important;
-            opacity: 1 !important;
-            z-index: 20 !important;
-            pointer-events: none !important;
-            display: none !important;
-        }
-
-        #section-12.active .section-10-left-image,
-        #section-12.active .section-10-right-image {
-            display: block !important;
-        }
-
-        @media (max-width: 1600px) {
-            .section-10-left-image {
+            .section-11-left-image {
                 transform: translate(calc(-450px - 80px), -50%) !important;
                 width: 320px !important;
             }
-            .section-10-right-image {
+            .section-11-right-image {
                 transform: translate(calc(450px + 80px), -50%) !important;
                 width: 320px !important;
             }
         }
 
         @media (max-width: 1400px) {
-            .section-10-left-image {
+            .section-11-left-image {
                 transform: translate(calc(-450px - 60px), -50%) !important;
                 width: 280px !important;
             }
-            .section-10-right-image {
+            .section-11-right-image {
                 transform: translate(calc(450px + 60px), -50%) !important;
                 width: 280px !important;
             }
         }
 
         @media (max-width: 1200px) {
-            .section-10-left-image,
-            .section-10-right-image {
-                display: none !important;
-            }
-        }
-
-        /* Section 9 - Locked content with side images */
-        .section-9-left-image {
-            position: fixed !important;
-            left: 0 !important;
-            right: 0 !important;
-            margin: 0 auto !important;
-            top: 50% !important;
-            transform: translate(calc(-450px - 100px), -50%) !important;
-            height: 75vh !important;
-            width: 400px !important;
-            object-fit: contain !important;
-            opacity: 1 !important;
-            z-index: 20 !important;
-            pointer-events: none !important;
-            display: none !important;
-        }
-
-        .section-9-right-image {
-            position: fixed !important;
-            left: 0 !important;
-            right: 0 !important;
-            margin: 0 auto !important;
-            top: 50% !important;
-            transform: translate(calc(450px + 100px), -50%) !important;
-            height: 75vh !important;
-            width: 400px !important;
-            object-fit: contain !important;
-            opacity: 1 !important;
-            z-index: 20 !important;
-            pointer-events: none !important;
-            display: none !important;
-        }
-
-        #section-11.active .section-9-left-image,
-        #section-11.active .section-9-right-image {
-            display: block !important;
-        }
-
-        @media (max-width: 1600px) {
-            .section-9-left-image {
-                transform: translate(calc(-450px - 80px), -50%) !important;
-                width: 320px !important;
-            }
-            .section-9-right-image {
-                transform: translate(calc(450px + 80px), -50%) !important;
-                width: 320px !important;
-            }
-        }
-
-        @media (max-width: 1400px) {
-            .section-9-left-image {
-                transform: translate(calc(-450px - 60px), -50%) !important;
-                width: 280px !important;
-            }
-            .section-9-right-image {
-                transform: translate(calc(450px + 60px), -50%) !important;
-                width: 280px !important;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .section-9-left-image,
-            .section-9-right-image {
-                display: none !important;
+            .section-11-left-image,
+            .section-11-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
             }
         }
 
@@ -1415,7 +1469,7 @@
             transition: opacity 0.8s ease-out;
         }
 
-        #section-11.active .section-9-locked-content {
+        #section-13.active .section-9-locked-content {
             opacity: 1;
         }
 
@@ -1461,6 +1515,715 @@
             }
         }
 
+
+
+        /* Section 13 - 3.RE D (Locked) */
+        .section-13-left-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(-450px - 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        .section-13-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        #section-13.active .section-13-left-image,
+        #section-13.active .section-13-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-13-left-image {
+                transform: translate(calc(-450px - 80px), -50%) !important;
+                width: 320px !important;
+            }
+            .section-13-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-13-left-image {
+                transform: translate(calc(-450px - 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+            .section-13-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-13-left-image,
+            .section-13-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 14 - 1.MI E */
+        .section-14-left-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(-450px - 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        .section-14-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        #section-14.active .section-14-left-image,
+        #section-14.active .section-14-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-14-left-image {
+                transform: translate(calc(-450px - 80px), -50%) !important;
+                width: 320px !important;
+            }
+            .section-14-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-14-left-image {
+                transform: translate(calc(-450px - 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+            .section-14-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-14-left-image,
+            .section-14-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 15 - 2.MI E */
+        .section-15-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 75vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        #section-15.active .section-15-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-15-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-15-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-15-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 16 - 1.FA F */
+        .section-16-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 75vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        #section-16.active .section-16-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-16-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-16-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-16-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 10 */
+        .section-10-left-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(-450px - 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        .section-10-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        #section-10.active .section-10-left-image,
+        #section-10.active .section-10-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-10-left-image {
+                transform: translate(calc(-450px - 80px), -50%) !important;
+                width: 320px !important;
+            }
+            .section-10-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-10-left-image {
+                transform: translate(calc(-450px - 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+            .section-10-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-10-left-image,
+            .section-10-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 12 */
+        .section-12-left-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(-450px - 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        .section-12-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        #section-12.active .section-12-left-image,
+        #section-12.active .section-12-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-12-left-image {
+                transform: translate(calc(-450px - 80px), -50%) !important;
+                width: 320px !important;
+            }
+            .section-12-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-12-left-image {
+                transform: translate(calc(-450px - 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+            .section-12-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-12-left-image,
+            .section-12-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 17 */
+        .section-17-left-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(-450px - 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        .section-17-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        #section-17.active .section-17-left-image,
+        #section-17.active .section-17-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-17-left-image {
+                transform: translate(calc(-450px - 80px), -50%) !important;
+                width: 320px !important;
+            }
+            .section-17-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-17-left-image {
+                transform: translate(calc(-450px - 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+            .section-17-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-17-left-image,
+            .section-17-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 20 */
+        .section-20-left-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(-450px - 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        .section-20-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        #section-20.active .section-20-left-image,
+        #section-20.active .section-20-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-20-left-image {
+                transform: translate(calc(-450px - 80px), -50%) !important;
+                width: 320px !important;
+            }
+            .section-20-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-20-left-image {
+                transform: translate(calc(-450px - 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+            .section-20-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-20-left-image,
+            .section-20-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 21 */
+        .section-21-left-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(-450px - 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        .section-21-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        #section-21.active .section-21-left-image,
+        #section-21.active .section-21-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-21-left-image {
+                transform: translate(calc(-450px - 80px), -50%) !important;
+                width: 320px !important;
+            }
+            .section-21-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-21-left-image {
+                transform: translate(calc(-450px - 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+            .section-21-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-21-left-image,
+            .section-21-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 11 */
+        .section-11-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 75vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        #section-11.active .section-11-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-11-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-11-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-11-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 18 */
+        .section-18-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 75vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        #section-18.active .section-18-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-18-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-18-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-18-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 19 */
+        .section-19-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 75vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        #section-19.active .section-19-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-19-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-19-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-19-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
         /* Section 8 - Both side images like Section 5 */
         .section-8-left-image {
             position: fixed !important;
@@ -1494,8 +2257,8 @@
             display: none !important;
         }
 
-        #section-10.active .section-8-left-image,
-        #section-10.active .section-8-right-image {
+        #section-8.active .section-8-left-image,
+        #section-8.active .section-8-right-image {
             display: block !important;
         }
 
@@ -1524,7 +2287,7 @@
         @media (max-width: 1200px) {
             .section-8-left-image,
             .section-8-right-image {
-                display: none !important;
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
             }
         }
 
@@ -1546,7 +2309,7 @@
         }
 
         /* Show image when section 7 is active */
-        #section-9.active .section-7-right-image {
+        #section-7.active .section-7-right-image {
             display: block !important;
         }
 
@@ -1567,7 +2330,151 @@
 
         @media (max-width: 1200px) {
             .section-7-right-image {
-                display: none !important;
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 5 side images */
+        .section-5-left-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(-450px - 100px), -50%) !important; /* Box width/2 + gap + image width/2 */
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        .section-5-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important; /* Box width/2 + gap + image width/2 */
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        /* Show images when section 5 is active */
+        #section-5.active .section-5-left-image,
+        #section-5.active .section-5-right-image {
+            display: block !important;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1600px) {
+            .section-5-left-image {
+                transform: translate(calc(-450px - 80px), -50%) !important;
+                width: 320px !important;
+            }
+            .section-5-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-5-left-image {
+                transform: translate(calc(-450px - 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+            .section-5-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-5-left-image,
+            .section-5-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
+            }
+        }
+
+        /* Section 9 - 1st Note Page (1.DO - C) */
+        .section-9-left-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(-450px - 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        .section-9-right-image {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin: 0 auto !important;
+            top: 50% !important;
+            transform: translate(calc(450px + 100px), -50%) !important;
+            height: 85vh !important;
+            width: 400px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: none !important;
+            display: none !important;
+            cursor: default !important;
+        }
+
+        #section-9.active .section-9-left-image,
+        #section-9.active .section-9-right-image {
+            display: block !important;
+        }
+
+        @media (max-width: 1600px) {
+            .section-9-left-image {
+                transform: translate(calc(-450px - 80px), -50%) !important;
+                width: 320px !important;
+            }
+            .section-9-right-image {
+                transform: translate(calc(450px + 80px), -50%) !important;
+                width: 320px !important;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .section-9-left-image {
+                transform: translate(calc(-450px - 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+            .section-9-right-image {
+                transform: translate(calc(450px + 60px), -50%) !important;
+                width: 280px !important;
+                height: 75vh !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .section-9-left-image,
+            .section-9-right-image {
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
             }
         }
 
@@ -1605,8 +2512,8 @@
         }
 
         /* Show images when section 6 is active */
-        #section-8.active .section-6-left-image,
-        #section-8.active .section-6-right-image {
+        #section-6.active .section-6-left-image,
+        #section-6.active .section-6-right-image {
             display: block !important;
         }
 
@@ -1636,7 +2543,7 @@
         @media (max-width: 1200px) {
             .section-6-left-image,
             .section-6-right-image {
-                display: none !important;
+                display: block !important; position: relative !important; transform: none !important; width: 80% !important; max-width: 300px !important; margin: 1rem auto !important; height: auto !important;
             }
         }
 
@@ -1695,76 +2602,6 @@
                 max-height: 50vh;
             }
         }
-        .section-5-left-image {
-            position: fixed !important;
-            left: 0 !important;
-            right: 0 !important;
-            margin: 0 auto !important;
-            top: 50% !important;
-            transform: translate(calc(-450px - 100px), -50%) !important; /* Box width/2 + gap + image width/2 */
-            height: 85vh !important;
-            width: 400px !important;
-            object-fit: contain !important;
-            opacity: 1 !important;
-            z-index: 20 !important;
-            pointer-events: none !important;
-            display: none !important;
-        }
-
-        .section-5-right-image {
-            position: fixed !important;
-            left: 0 !important;
-            right: 0 !important;
-            margin: 0 auto !important;
-            top: 50% !important;
-            transform: translate(calc(450px + 100px), -50%) !important; /* Box width/2 + gap + image width/2 */
-            height: 85vh !important;
-            width: 400px !important;
-            object-fit: contain !important;
-            opacity: 1 !important;
-            z-index: 20 !important;
-            pointer-events: none !important;
-            display: none !important;
-        }
-
-        /* Show images when section 5 is active */
-        #section-7.active .section-5-left-image,
-        #section-7.active .section-5-right-image {
-            display: block !important;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 1600px) {
-            .section-5-left-image {
-                transform: translate(calc(-450px - 80px), -50%) !important;
-                width: 320px !important;
-            }
-            .section-5-right-image {
-                transform: translate(calc(450px + 80px), -50%) !important;
-                width: 320px !important;
-            }
-        }
-
-        @media (max-width: 1400px) {
-            .section-5-left-image {
-                transform: translate(calc(-450px - 60px), -50%) !important;
-                width: 280px !important;
-                height: 75vh !important;
-            }
-            .section-5-right-image {
-                transform: translate(calc(450px + 60px), -50%) !important;
-                width: 280px !important;
-                height: 75vh !important;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .section-5-left-image,
-            .section-5-right-image {
-                display: none !important;
-            }
-        }
-
         .section-text-content.auto-scrolling {
             position: relative;
         }
@@ -2457,6 +3294,474 @@
             50% { transform: translateY(10px); }
         }
 
+    
+        .ghost-box::-webkit-scrollbar { width: 10px; }
+        .ghost-box::-webkit-scrollbar-track { background: rgba(77, 208, 225, 0.2); border-radius: 10px; }
+        .ghost-box::-webkit-scrollbar-thumb { background: rgba(77, 208, 225, 0.7); border-radius: 10px; }
+        .ghost-box::-webkit-scrollbar-thumb:hover { background: rgba(77, 208, 225, 0.9); }
+
+        /* ========================================== */
+        /* MOBİL VE TABLET RESPONSIVE TASARIM */
+        /* ========================================== */
+        
+        /* Tablet (1024px ve altı) */
+        @media (max-width: 1024px) {
+            /* Hero section başlık boyutları */
+            .hero-title {
+                font-size: clamp(2.5rem, 10vw, 5rem);
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+            }
+            
+            /* Section başlıkları */
+            .section-title {
+                font-size: clamp(1.8rem, 5vw, 2.5rem);
+            }
+            
+            /* Metin kutuları - tam genişlik */
+            .section-content {
+                width: 90% !important;
+                max-width: 100% !important;
+                padding: 1.5rem !important;
+            }
+            
+            .section-text-content {
+                max-height: 70vh !important;
+            }
+            
+            /* Text block padding */
+            .text-block {
+                padding: 1rem !important;
+            }
+            
+            /* Story text boyutları */
+            .story-text {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+            }
+            
+            .story-text-bold {
+                font-size: 1.1rem !important;
+            }
+            
+            /* Section 3 - The Universe */
+            .section-3-content-container {
+                width: 90% !important;
+                max-width: 100% !important;
+                flex-direction: column !important;
+                gap: 1.5rem !important;
+            }
+            
+            .section-3-image-container,
+            .section-3-universe-content {
+                flex: none !important;
+                width: 100% !important;
+            }
+            
+            .section-3-dream-piano-image {
+                max-height: 40vh !important;
+            }
+            
+            /* Section 6 - Split columns */
+            .section-6-split-container {
+                flex-direction: column !important;
+                max-height: none !important;
+                gap: 1rem !important;
+            }
+            
+            .section-6-column {
+                max-height: 35vh !important;
+            }
+            
+            /* Video container */
+            .video-container {
+                width: 90% !important;
+                max-width: 600px !important;
+            }
+            
+            /* Magic content */
+            .section-magic-content {
+                width: 90% !important;
+                padding: 2rem 1.5rem !important;
+            }
+            
+            /* Scroll indicators boyut */
+            .scroll-indicator-up,
+            .scroll-indicator-down {
+                width: 50px !important;
+                height: 50px !important;
+            }
+            
+            .scroll-arrow-up,
+            .scroll-arrow-down {
+                width: 20px !important;
+                height: 20px !important;
+            }
+        }
+        
+        /* Mobil (768px ve altı) */
+        @media (max-width: 768px) {
+            /* Hero */
+            .hero-title {
+                font-size: clamp(2rem, 12vw, 4rem);
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(0.8rem, 3vw, 1.1rem);
+            }
+            
+            .hero-author {
+                font-size: clamp(0.7rem, 2vw, 0.9rem);
+            }
+            
+            /* Piano silhouette küçült */
+            .piano-silhouette {
+                width: 80% !important;
+                max-width: 300px !important;
+            }
+            
+            /* Section başlıkları */
+            .section-title {
+                font-size: clamp(1.5rem, 6vw, 2.2rem);
+            }
+            
+            /* Metin kutuları */
+            .section-content {
+                width: 95% !important;
+                padding: 1.2rem !important;
+            }
+            
+            .section-text-content {
+                max-height: 65vh !important;
+            }
+            
+            /* Text */
+            .story-text {
+                font-size: 0.9rem !important;
+            }
+            
+            .story-text-bold {
+                font-size: 1rem !important;
+            }
+            
+            /* Section 6 columns */
+            .section-6-column {
+                max-height: 30vh !important;
+                padding: 1.5rem !important;
+            }
+            
+            .section-6-title {
+                font-size: clamp(1.5rem, 5vw, 2rem) !important;
+            }
+            
+            /* Video container */
+            .video-container {
+                width: 95% !important;
+            }
+            
+            /* Features header */
+            .section-3-features-header {
+                padding: 0.8rem !important;
+                gap: 0.5rem !important;
+            }
+            
+            .feature-tag {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.65rem !important;
+            }
+            
+            /* Section 3 content */
+            .section-3-content-container {
+                width: 95% !important;
+                gap: 1rem !important;
+            }
+            
+            .section-3-dream-piano-image {
+                max-height: 35vh !important;
+            }
+            
+            /* Locked content */
+            .section-9-locked-content {
+                width: 90% !important;
+                padding: 2rem 1.5rem !important;
+            }
+            
+            .section-9-locked-title {
+                font-size: clamp(2rem, 8vw, 3.5rem) !important;
+            }
+            
+            .section-9-lock-icon {
+                width: clamp(100px, 15vw, 200px) !important;
+                height: clamp(100px, 15vw, 200px) !important;
+            }
+        }
+        
+        /* Küçük mobil (480px ve altı) */
+        @media (max-width: 480px) {
+            /* Hero */
+            .hero-title {
+                font-size: clamp(1.8rem, 14vw, 3rem);
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(0.7rem, 3.5vw, 1rem);
+                letter-spacing: 0.2em !important;
+            }
+            
+            /* Section başlık */
+            .section-title {
+                font-size: clamp(1.3rem, 7vw, 2rem);
+            }
+            
+            /* Metin kutuları */
+            .section-content {
+                width: 98% !important;
+                padding: 1rem !important;
+                border-radius: 15px !important;
+            }
+            
+            .section-text-content {
+                max-height: 60vh !important;
+            }
+            
+            /* Text block */
+            .text-block {
+                padding: 0.8rem !important;
+                margin-bottom: 0.8rem !important;
+                border-radius: 12px !important;
+            }
+            
+            /* Text boyutları */
+            .story-text {
+                font-size: 0.85rem !important;
+                line-height: 1.5 !important;
+            }
+            
+            .story-text-bold {
+                font-size: 0.95rem !important;
+            }
+            
+            .story-text-italic {
+                font-size: 0.9rem !important;
+            }
+            
+            .story-text-emphasis {
+                font-size: 0.9rem !important;
+            }
+            
+            /* Section 6 */
+            .section-6-column {
+                max-height: 25vh !important;
+                padding: 1rem !important;
+            }
+            
+            .section-6-title {
+                font-size: clamp(1.2rem, 6vw, 1.8rem) !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            /* Video container */
+            .video-container {
+                width: 98% !important;
+                border-radius: 15px !important;
+            }
+            
+            .video-controls {
+                padding: 0.5rem !important;
+            }
+            
+            .control-btn {
+                width: 35px !important;
+                height: 35px !important;
+                font-size: 0.9rem !important;
+            }
+            
+            /* Features */
+            .feature-tag {
+                padding: 0.3rem 0.6rem !important;
+                font-size: 0.6rem !important;
+            }
+            
+            /* Section 3 */
+            .section-3-dream-piano-image {
+                max-height: 30vh !important;
+            }
+            
+            /* Scroll indicators */
+            .scroll-indicator-up,
+            .scroll-indicator-down {
+                width: 45px !important;
+                height: 45px !important;
+            }
+            
+            /* Locked content */
+            .section-9-locked-content {
+                width: 95% !important;
+                padding: 1.5rem 1rem !important;
+            }
+            
+            .section-9-locked-title {
+                font-size: clamp(1.8rem, 10vw, 3rem) !important;
+            }
+            
+            .section-9-locked-subtitle {
+                font-size: clamp(1.5rem, 8vw, 2.5rem) !important;
+            }
+            
+            /* Magic content */
+            .section-magic-content {
+                width: 95% !important;
+                padding: 1.5rem 1rem !important;
+            }
+            
+            .magic-title {
+                font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+            }
+            
+            .magic-text {
+                font-size: 0.85rem !important;
+            }
+        }
+        
+        /* Touch device optimizasyonları */
+        @media (hover: none) and (pointer: coarse) {
+            /* Touch için daha büyük tıklama alanları */
+            .scroll-indicator-up,
+            .scroll-indicator-down {
+                padding: 10px;
+            }
+            
+            /* Control button'lar */
+            .control-btn {
+                min-width: 44px;
+                min-height: 44px;
+            }
+            
+            /* Smooth scrolling */
+            .section-content,
+            .section-6-column {
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+        
+        /* Yatay mod (landscape) optimizasyonları */
+        @media (max-width: 1024px) and (orientation: landscape) {
+            /* Body ve html tam ekran */
+            html, body {
+                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
+            }
+            
+            /* Hero section */
+            .hero-title {
+                font-size: clamp(2rem, 8vw, 4rem);
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(0.8rem, 2vw, 1.2rem);
+            }
+            
+            /* Section content */
+            .section-content {
+                max-height: 85vh !important;
+                width: 85% !important;
+            }
+            
+            .section-text-content {
+                max-height: 80vh !important;
+            }
+            
+            /* Section 3 */
+            .section-3-content-container {
+                flex-direction: row !important;
+                max-height: 85vh !important;
+                width: 90% !important;
+            }
+            
+            .section-3-dream-piano-image {
+                max-height: 75vh !important;
+            }
+            
+            .section-3-universe-content {
+                max-height: 75vh !important;
+            }
+            
+            /* Section 6 columns */
+            .section-6-split-container {
+                flex-direction: row !important;
+                max-height: 80vh !important;
+            }
+            
+            .section-6-column {
+                max-height: 75vh !important;
+            }
+            
+            /* Video container */
+            .video-container {
+                max-height: 80vh !important;
+            }
+            
+            /* Text blocks */
+            .text-block {
+                padding: 0.8rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            
+            /* Story text */
+            .story-text {
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+            }
+            
+            /* Piano silhouette */
+            .piano-silhouette {
+                max-width: 400px !important;
+            }
+            
+            /* Locked content */
+            .section-9-locked-content {
+                max-height: 85vh !important;
+            }
+            
+            /* Scroll indicators - yanlarda */
+            .scroll-indicator-up {
+                right: 20px !important;
+                left: auto !important;
+            }
+            
+            .scroll-indicator-down {
+                right: 20px !important;
+                left: auto !important;
+            }
+        }
+        
+        /* Mobil yatay mod (küçük ekranlar) */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .section-content {
+                width: 90% !important;
+                max-height: 90vh !important;
+            }
+            
+            .section-text-content {
+                max-height: 85vh !important;
+            }
+            
+            .hero-title {
+                font-size: clamp(1.8rem, 7vw, 3rem);
+            }
+            
+            .section-title {
+                font-size: clamp(1.4rem, 5vw, 2rem);
+            }
+            
+            .story-text {
+                font-size: 0.85rem !important;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -2612,8 +3917,180 @@
         </div>
     </section>
 
+
+    <!-- Section 27 - Water Based Universe -->
+    <section id="section-4" class="content-section">
+        <canvas id="ocean-canvas-4"></canvas>
+        
+        <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 90%; text-align: center; z-index: 15;">
+            <h2 style="font-size: 2rem; color: #4dd0e1; text-shadow: 0 0 20px rgba(77, 208, 225, 0.6); margin: 0;">
+                How is the entire artwork, the entire universe completely WATER BASED?
+            </h2>
+        </div>
+        
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; gap: 3rem; width: 85%; max-width: 1400px; z-index: 10; align-items: center;">
+            <div style="flex: 1; max-width: 600px; max-height: 60vh; overflow-y: auto; padding: 2.5rem; background: rgba(0, 0, 0, 0.6); border-radius: 20px; backdrop-filter: blur(20px); border: 1px solid rgba(77, 208, 225, 0.3);">
+                <p class="story-text">This universe is built on a real physical water simulation.</p>
+                <p class="story-text">In the background, it takes the colors and shades found ONLY on the Su'rreal piano, and based on Su's special traditional painting techniques, it creates generative art.</p>
+                <p class="story-text">This could also, perhaps somewhat ambitiously, mean bringing the Touch Designer page live to the web in real time. :)</p>
+                <p class="story-text-emphasis">In summary,</p>
+                <p class="story-text">Based on Su's special traditional art techniques, it creates generative art that is conscious, deliberately limited, yet holds infinite possibilities within itself. The shape, speed, intensity of the brushstrokes and all parameters are created in real time from the frequencies of that note.</p>
+            </div>
+            
+            <div style="flex: 1; max-width: 700px;">
+                <video id="water-video" style="width: 100%; max-height: 60vh; border-radius: 15px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); border: 2px solid rgba(77, 208, 225, 0.3);" autoplay loop muted playsinline preload="auto">
+                    <source src="https://cdn.jsdelivr.net/gh/busrasuhaydar/buyukpblog@main/assets/vm.mp4" type="video/mp4">
+                    <source src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/vm.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <script>
+                    // Video yüklenme garantisi
+                    const waterVideo = document.getElementById('water-video');
+                    if (waterVideo) {
+                        waterVideo.addEventListener('loadeddata', () => {
+                            console.log('Water video loaded successfully');
+                        });
+                        waterVideo.addEventListener('error', (e) => {
+                            console.error('Water video failed to load:', e);
+                        });
+                        // Manuel play denemesi
+                        waterVideo.play().catch(e => console.log('Autoplay prevented:', e));
+                    }
+                </script>
+            </div>
+        </div>
+        
+            <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down" onclick="scrollToNextSection()">
+            <div class="scroll-arrow-down"></div>
+        </div>
+    </section>
+
+
+    <!-- Section 5 - Ghost Mode -->
+    <section id="section-5" class="content-section">
+        <canvas id="ocean-canvas-5"></canvas>
+        
+        <div style="position: absolute; top: 5%; left: 50%; transform: translateX(-50%); z-index: 15; text-align: center;">
+            <h2 style="font-size: 2.5rem; color: #4dd0e1; text-shadow: 0 0 30px rgba(77, 208, 225, 0.8); margin: 0; font-weight: 900;">
+                A COLORFUL GHOST LIVES HERE!
+            </h2>
+        </div>
+        
+        <div style="position: absolute; top: 56%; left: 50%; transform: translate(-50%, -50%); display: flex; gap: 2.5rem; width: 88%; max-width: 1300px; z-index: 10;">
+            <div style="flex: 1; max-width: 450px;">
+                <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/myghost.png" alt="Ghost" style="width: 100%; max-width: 380px; border-radius: 20px; box-shadow: 0 20px 60px rgba(77, 208, 225, 0.3); border: 3px solid rgba(77, 208, 225, 0.4);" />
+            </div>
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 1.8rem; max-width: 650px;">
+                <div class="ghost-box" style="background: rgba(0, 0, 0, 0.7); padding: 2rem; border-radius: 20px; backdrop-filter: blur(20px); border: 2px solid rgba(77, 208, 225, 0.4); max-height: 22vh; overflow-y: scroll;">
+                    <p style="font-size: 1.1rem; line-height: 1.7; margin: 0; color: rgba(255, 255, 255, 0.9);">
+                        As both a rebellion against and a tribute to the loneliness that art brings, a colorful ghost has been invited into this universe. An artist lives inside the SU'rreal Piano, the colorful ghost, ready to play (create an mp3 playlist and send) all the songs you wish for, as long as you are gentle enough to accompany it.
+                    </p>
+                </div>
+                <div class="ghost-box" style="background: rgba(0, 0, 0, 0.7); padding: 2rem; border-radius: 20px; backdrop-filter: blur(20px); border: 2px solid rgba(77, 208, 225, 0.4); max-height: 35vh; overflow-y: scroll;">
+                    <h3 style="font-size: 1.3rem; color: #4dd0e1; margin-bottom: 1.2rem; font-weight: 700;">A Guide to Bargaining with the Colored Ghost:</h3>
+                    <ol style="font-size: 1rem; line-height: 1.8; margin: 0; padding-left: 1.5rem; color: rgba(255, 255, 255, 0.85);">
+                        <li style="margin-bottom: 0.8rem;">Think of your favorite songs and list them.</li>
+                        <li style="margin-bottom: 0.8rem;">Open them on YouTube and copy the URL.</li>
+                        <li style="margin-bottom: 0.8rem;">Find any MP3 converter website and convert the YouTube URL link into an MP3 file, then download it. (If you like, for example: <a href="https://notube.net/tr/youtube-app-312" target="_blank" style="color: #4dd0e1;">https://notube.net/tr/youtube-app-312</a>)</li>
+                        <li style="margin-bottom: 0.8rem;">Create a folder containing the MP3 files of the songs you like.</li>
+                        <li style="margin-bottom: 0.8rem;">Come to the SU'rreal piano universe, and gently touch (click) the colored ghost.</li>
+                        <li style="margin-bottom: 0.8rem;">From the favorite folder you created, select either a single song if you wish or all of them, and confirm.</li>
+                        <li>The colored ghost has already started playing the songs you love on the SU'rreal piano for you!</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down" onclick="scrollToNextSection()">
+            <div class="scroll-arrow-down"></div>
+        </div>
+    </section>
+
+
+    <!-- Section 18 - Empty Ocean -->
+    <section id="section-6" class="content-section gallery-section">
+        <div class="gallery-grid">
+            <div class="gallery-card"><img src="https://picsum.photos/id/660/1200/1200" alt="1"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/669/1200/1200" alt="2"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/823/1200/1200" alt="3"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/64/1200/1200" alt="4"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/836/1200/1200" alt="5"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/1027/1200/1200" alt="6"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/646/1200/1200" alt="7"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/10/1200/1200" alt="8"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/20/1200/1200" alt="9"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/30/1200/1200" alt="10"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/40/1200/1200" alt="11"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/50/1200/1200" alt="12"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/60/1200/1200" alt="13"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/70/1200/1200" alt="14"></div>
+            <div class="gallery-card"><img src="https://picsum.photos/id/80/1200/1200" alt="15"></div>
+        </div>
+            <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down" onclick="scrollToNextSection()">
+            <div class="scroll-arrow-down"></div>
+        </div>
+    </section>
+
+
+    <!-- Section 4 - Final Piano Story -->
+    <section id="section-7" class="content-section">
+        <canvas id="ocean-canvas-7"></canvas>
+        
+        <div class="section-3-content-container">
+            <div class="section-3-image-container">
+                <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/MYDREAMPIANO.JPEG" 
+                     alt="Piano Final Story" 
+                     class="section-3-dream-piano-image" />
+            </div>
+            
+            <div class="section-3-universe-content">
+                <div class="text-block">
+                    <p class="story-text">
+                        At first glance, perhaps this may seem like just a piano. 16 keys, colors, sounds. But with each key you touch, you realize this is a journey. A journey stretching from birth to death, from the first breath to the last. And like every great journey, this too is actually a love story.
+                    </p>
+                    <p class="story-text">
+                        Because isn't love like this too? A beginning, a potential, a moment carrying all colors in their brightest state. Then transitions, bridges, flowing from one state to another. Deepening, fears, continuing to swim even while feeling the danger of drowning. Learning, making sense, reading that person page by page. Then passion - that fire that burns everything, in which you are trapped. And finally... .....?
+                    </p>
+                    <p class="story-text">
+                        This piano listens to seven special moments, with seven breaths.
+                    </p>
+                    <p class="story-text-emphasis">
+                        This piano plays seven moments but actually tells a single story. The story of life. The story of love. Beginning, transition, depth, awareness, passion, end. Each note a stage, each key a stop. And each time you press, you don't just hear a sound. You hear a lifetime, a love, a journey.
+                    </p>
+                    <p class="story-text-question">
+                        Love and life. How thin the line between them is, isn't it?
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="position: absolute; bottom: 6%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 100;">
+            <a href="https://superrare.com/artwork/eth/0x678dC78df1AD075C9784011998899FB1F0c09789/5" 
+               target="_blank" 
+               style="display: inline-block; font-size: 1.4rem; font-weight: 600; color: #4dd0e1; text-decoration: none; padding: 1rem 2rem; background: rgba(77, 208, 225, 0.1); border: 2px solid rgba(77, 208, 225, 0.4); border-radius: 30px; transition: all 0.3s ease; pointer-events: auto !important; cursor: pointer !important;">
+                - click for compose by painting the water with love, color and sound! -
+            </a>
+        </div>
+            <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
+            <div class="scroll-arrow-up"></div>
+        </div>
+        <div class="scroll-indicator-down" onclick="scrollToNextSection()">
+            <div class="scroll-arrow-down"></div>
+        </div>
+    </section>
+
+
     <!-- Section 6 - The Magic -->
-    <section id="section-6" class="content-section">
+    <section id="section-8" class="content-section">
         <div class="section-content section-magic-content">
             <h2 class="section-title magic-title">The Magic</h2>
             
@@ -2666,18 +4143,19 @@
         </div>
     </section>
 
+
     <!-- Section 5 - Gallery -->
-    <section id="section-7" class="content-section">
+    <section id="section-9" class="content-section">
         
         <!-- Left side image - ABSOLUTE -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/1.c3du%CC%88z.png" 
              alt="Left C Note Visual" 
-             class="section-5-left-image" />
+             class="section-9-left-image" />
         
         <!-- Right side image - ABSOLUTE -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/1.c3.png" 
              alt="Right C Note Visual" 
-             class="section-5-right-image" />
+             class="section-9-right-image" />
         
         <!-- Content in center -->
         <div class="section-content section-text-content">
@@ -2829,18 +4307,19 @@
         </div>
     </section>
 
+
     <!-- Section 6 - Two Column: 2.DO and 3.DO -->
-    <section id="section-8" class="content-section">
+    <section id="section-10" class="content-section">
         
         <!-- Left side image - 8.c4.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/8.c4.png" 
              alt="2.DO C4 Visual" 
-             class="section-6-left-image" />
+             class="section-10-left-image" />
         
         <!-- Right side image - 15.c5yeni.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/15.c5yeni.png" 
              alt="3.DO C5 Visual" 
-             class="section-6-right-image" />
+             class="section-10-right-image" />
         
         <div class="section-content">
             <div class="section-6-split-container">
@@ -2907,13 +4386,14 @@
         </div>
     </section>
 
+
     <!-- Section 7 - DO/C -->
-    <section id="section-9" class="content-section">
+    <section id="section-11" class="content-section">
         
         <!-- Right side image - 2.D3.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/2.D3.png" 
              alt="RE D3 Visual" 
-             class="section-7-right-image" />
+             class="section-11-right-image" />
         
         <div class="section-content section-text-content">
             <h2 class="section-title">1.RE - D, 2nd key</h2>
@@ -2958,18 +4438,19 @@
         </div>
     </section>
 
+
     <!-- Section 8 - RE/D -->
-    <section id="section-10" class="content-section">
+    <section id="section-12" class="content-section">
         
         <!-- Left side image - 9.d4düz.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/9.d4du%CC%88z.png" 
              alt="RE D4 Left Visual" 
-             class="section-8-left-image" />
+             class="section-12-left-image" />
         
         <!-- Right side image - 9.d4.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/9.d4.png" 
              alt="RE D4 Right Visual" 
-             class="section-8-right-image" />
+             class="section-12-right-image" />
         
         <div class="section-content section-text-content">
             <h2 class="section-title">2.RE - D, 9th key</h2>
@@ -3032,18 +4513,19 @@
         </div>
     </section>
 
+
     <!-- Section 9 - 3.RE 16th Key (Locked) -->
-    <section id="section-11" class="content-section">
+    <section id="section-13" class="content-section">
         
         <!-- Left side image - 16d5düz.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/16d5du%CC%88z.png" 
              alt="RE D5 Locked Left Visual" 
-             class="section-9-left-image" />
+             class="section-13-left-image" />
         
         <!-- Right side image - 16d5.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/16d5.png" 
              alt="RE D5 Locked Right Visual" 
-             class="section-9-right-image" />
+             class="section-13-right-image" />
         
         <div class="section-9-locked-content">
             <h2 class="section-9-locked-title">3.RE - D</h2>
@@ -3072,18 +4554,19 @@
         </div>
     </section>
 
+
     <!-- Section 10 - 1.MI E 3rd key -->
-    <section id="section-12" class="content-section">
+    <section id="section-14" class="content-section">
         
         <!-- Left side image - e3düz.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/e3du%CC%88z.png" 
              alt="MI E3 Left Visual" 
-             class="section-10-left-image" />
+             class="section-14-left-image" />
         
         <!-- Right side image - e3.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/e3.png" 
              alt="MI E3 Right Visual" 
-             class="section-10-right-image" />
+             class="section-14-right-image" />
         
         <div class="section-content section-text-content">
             <h2 class="section-title">1.MI - E<br><span style="font-size: 0.7em;">3rd key</span></h2>
@@ -3158,13 +4641,14 @@
         </div>
     </section>
 
+
     <!-- Section 11 - 2.MI E 10th key -->
-    <section id="section-13" class="content-section">
+    <section id="section-15" class="content-section">
         
         <!-- Right side image - 10.E4.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/10.E4.png" 
              alt="MI E4 Visual" 
-             class="section-11-right-image" />
+             class="section-15-right-image" />
         
         <div class="section-content section-text-content">
             <h2 class="section-title">2.MI - E<br><span style="font-size: 0.7em;">10th key</span></h2>
@@ -3199,13 +4683,14 @@
         </div>
     </section>
 
+
     <!-- Section 12 - 1.FA F 4th key -->
-    <section id="section-14" class="content-section">
+    <section id="section-16" class="content-section">
         
         <!-- Right side image - f3.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/f3.png" 
              alt="FA F3 Visual" 
-             class="section-12-right-image" />
+             class="section-16-right-image" />
         
         <div class="section-content section-text-content">
             <h2 class="section-title">1.FA - F<br><span style="font-size: 0.7em;">4th key</span></h2>
@@ -3243,18 +4728,19 @@
         </div>
     </section>
 
+
     <!-- Section 13 - 2.FA F 11th key -->
-    <section id="section-15" class="content-section">
+    <section id="section-17" class="content-section">
         
         <!-- Left side image - 11.F4.düz.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/11.F4.du%CC%88z.png" 
              alt="FA F4 Left Visual" 
-             class="section-13-left-image" />
+             class="section-17-left-image" />
         
         <!-- Right side image - 11.F4.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/11.F4.png" 
              alt="FA F4 Right Visual" 
-             class="section-13-right-image" />
+             class="section-17-right-image" />
         
         <!-- Main content box (narrow horizontal) -->
         <div class="section-content section-13-main-box">
@@ -3348,13 +4834,14 @@
         </div>
     </section>
 
+
     <!-- Section 14 - 1.SOL G 5th key -->
-    <section id="section-16" class="content-section">
+    <section id="section-18" class="content-section">
         
         <!-- Right side image - 5.G3.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/5.G3.png" 
              alt="SOL G3 Visual" 
-             class="section-14-right-image" />
+             class="section-18-right-image" />
         
         <div class="section-content section-text-content">
             <h2 class="section-title">1.SOL - G<br><span style="font-size: 0.7em;">5th key</span></h2>
@@ -3404,13 +4891,14 @@
         </div>
     </section>
 
+
     <!-- Section 15 - 2.SOL G 12th key -->
-    <section id="section-17" class="content-section">
+    <section id="section-19" class="content-section">
         
         <!-- Right side image - 12.G4.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/12.G4.png" 
              alt="SOL G4 Visual" 
-             class="section-15-right-image" />
+             class="section-19-right-image" />
         
         <div class="section-content section-text-content">
             <h2 class="section-title">2.SOL - G<br><span style="font-size: 0.7em;">12th key</span></h2>
@@ -3457,18 +4945,19 @@
         </div>
     </section>
 
+
     <!-- Section 16 - 1.SI B 7th key -->
-    <section id="section-18" class="content-section">
+    <section id="section-20" class="content-section">
         
         <!-- Left side image - 7.B3.düz.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/7.B3.du%CC%88z.png" 
              alt="SI B3 Left Visual" 
-             class="section-16-left-image" />
+             class="section-20-left-image" />
         
         <!-- Right side image - 7.B3.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/7.B3.png" 
              alt="SI B3 Right Visual" 
-             class="section-16-right-image" />
+             class="section-20-right-image" />
         
         <div class="section-content section-text-content">
             <h2 class="section-title">1.SI - B<br><span style="font-size: 0.7em;">7th key</span></h2>
@@ -3544,18 +5033,19 @@
         </div>
     </section>
 
+
     <!-- Section 17 - 2.SI B 14th key FIRE -->
-    <section id="section-19" class="content-section">
+    <section id="section-21" class="content-section">
         
         <!-- Left side image - 14.B4.düz.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/14.B4.du%CC%88z.png" 
              alt="SI B4 Fire Left Visual" 
-             class="section-17-left-image" />
+             class="section-21-left-image" />
         
         <!-- Right side image - 14.B4.png -->
         <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/14.B4.png" 
              alt="SI B4 Fire Right Visual" 
-             class="section-17-right-image" />
+             class="section-21-right-image" />
         
         <div class="section-content section-text-content">
             <h2 class="section-title">2.SI - B<br><span style="font-size: 0.7em;" class="section-17-fire">14th key</span></h2>
@@ -3622,206 +5112,10 @@
         </div>
     </section>
 
-    <!-- Section 18 - Empty Ocean -->
-    <section id="section-5" class="content-section gallery-section">
-        <div class="gallery-grid">
-            <div class="gallery-card"><img src="https://picsum.photos/id/660/1200/1200" alt="1"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/669/1200/1200" alt="2"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/823/1200/1200" alt="3"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/64/1200/1200" alt="4"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/836/1200/1200" alt="5"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/1027/1200/1200" alt="6"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/646/1200/1200" alt="7"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/10/1200/1200" alt="8"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/20/1200/1200" alt="9"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/30/1200/1200" alt="10"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/40/1200/1200" alt="11"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/50/1200/1200" alt="12"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/60/1200/1200" alt="13"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/70/1200/1200" alt="14"></div>
-            <div class="gallery-card"><img src="https://picsum.photos/id/80/1200/1200" alt="15"></div>
-        </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
-    </section>
-
-    <!-- Section 4 - Final Piano Story -->
-    <section id="section-4" class="content-section">
-        <canvas id="ocean-canvas-4"></canvas>
-        
-        <div class="section-3-content-container">
-            <div class="section-3-image-container">
-                <img src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/MYDREAMPIANO.JPEG" 
-                     alt="Piano Final Story" 
-                     class="section-3-dream-piano-image" />
-            </div>
-            
-            <div class="section-3-universe-content">
-                <div class="text-block">
-                    <p class="story-text">
-                        At first glance, perhaps this may seem like just a piano. 16 keys, colors, sounds. But with each key you touch, you realize this is a journey. A journey stretching from birth to death, from the first breath to the last. And like every great journey, this too is actually a love story.
-                    </p>
-                    <p class="story-text">
-                        Because isn't love like this too? A beginning, a potential, a moment carrying all colors in their brightest state. Then transitions, bridges, flowing from one state to another. Deepening, fears, continuing to swim even while feeling the danger of drowning. Learning, making sense, reading that person page by page. Then passion - that fire that burns everything, in which you are trapped. And finally... .....?
-                    </p>
-                    <p class="story-text">
-                        This piano listens to seven special moments, with seven breaths.
-                    </p>
-                    <p class="story-text-emphasis">
-                        This piano plays seven moments but actually tells a single story. The story of life. The story of love. Beginning, transition, depth, awareness, passion, end. Each note a stage, each key a stop. And each time you press, you don't just hear a sound. You hear a lifetime, a love, a journey.
-                    </p>
-                    <p class="story-text-question">
-                        Love and life. How thin the line between them is, isn't it?
-                    </p>
-                </div>
-            </div>
-        </div>
-        
-        <div style="position: absolute; bottom: 6%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 5;">
-            <a href="https://superrare.com/artwork/eth/0x678dC78df1AD075C9784011998899FB1F0c09789/5" 
-               target="_blank" 
-               style="display: inline-block; font-size: 1.4rem; font-weight: 600; color: #4dd0e1; text-decoration: none; padding: 1rem 2rem; background: rgba(77, 208, 225, 0.1); border: 2px solid rgba(77, 208, 225, 0.4); border-radius: 30px;">
-                - click for compose by painting the water with love, color and sound! -
-            </a>
-        </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
-    </section>
-
-    <!-- Section 20 - Empty Ocean -->
-    <section id="section-20" class="content-section">
-            <div class="scroll-indicator-down" onclick="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
-    </section>
-
-    <!-- Section 21 - Empty Ocean -->
-    <section id="section-21" class="content-section">
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
-    </section>
-
-    <!-- Section 22 - Empty Ocean -->
-    <section id="section-22" class="content-section">
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
-    </section>
-
-    <!-- Section 23 - Empty Ocean -->
-    <section id="section-23" class="content-section">
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
-    </section>
-
-    <!-- Section 24 - Empty Ocean -->
-    <section id="section-24" class="content-section">
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
-    </section>
-
-    <!-- Section 25 - Empty Ocean -->
-    <section id="section-25" class="content-section">
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
-    </section>
-
-    <!-- Section 26 - Empty Ocean -->
-    <section id="section-26" class="content-section">
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
-    </section>
-
-    <!-- Section 27 - Water Based Universe -->
-    <section id="section-27" class="content-section">
-        <canvas id="ocean-canvas-27"></canvas>
-        
-        <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 90%; text-align: center; z-index: 15;">
-            <h2 style="font-size: 2rem; color: #4dd0e1; text-shadow: 0 0 20px rgba(77, 208, 225, 0.6); margin: 0;">
-                How is the entire artwork, the entire universe completely WATER BASED?
-            </h2>
-        </div>
-        
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; gap: 3rem; width: 85%; max-width: 1400px; z-index: 10; align-items: center;">
-            <div style="flex: 1; max-width: 600px; max-height: 60vh; overflow-y: auto; padding: 2.5rem; background: rgba(0, 0, 0, 0.6); border-radius: 20px; backdrop-filter: blur(20px); border: 1px solid rgba(77, 208, 225, 0.3);">
-                <p class="story-text">This universe is built on a real physical water simulation.</p>
-                <p class="story-text">In the background, it takes the colors and shades found ONLY on the Su'rreal piano, and based on Su's special traditional painting techniques, it creates generative art.</p>
-                <p class="story-text">This could also, perhaps somewhat ambitiously, mean bringing the Touch Designer page live to the web in real time. :)</p>
-                <p class="story-text-emphasis">In summary,</p>
-                <p class="story-text">Based on Su's special traditional art techniques, it creates generative art that is conscious, deliberately limited, yet holds infinite possibilities within itself. The shape, speed, intensity of the brushstrokes and all parameters are created in real time from the frequencies of that note.</p>
-            </div>
-            
-            <div style="flex: 1; max-width: 700px;">
-                <video id="water-video" style="width: 100%; max-height: 60vh; border-radius: 15px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); border: 2px solid rgba(77, 208, 225, 0.3);" autoplay loop muted playsinline preload="auto">
-                    <source src="https://cdn.jsdelivr.net/gh/busrasuhaydar/buyukpblog@main/assets/vm.mp4" type="video/mp4">
-                    <source src="https://raw.githubusercontent.com/busrasuhaydar/buyukpblog/main/assets/vm.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <script>
-                    // Video yüklenme garantisi
-                    const waterVideo = document.getElementById('water-video');
-                    if (waterVideo) {
-                        waterVideo.addEventListener('loadeddata', () => {
-                            console.log('Water video loaded successfully');
-                        });
-                        waterVideo.addEventListener('error', (e) => {
-                            console.error('Water video failed to load:', e);
-                        });
-                        // Manuel play denemesi
-                        waterVideo.play().catch(e => console.log('Autoplay prevented:', e));
-                    }
-                </script>
-            </div>
-        </div>
-        
-            <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
-            <div class="scroll-arrow-up"></div>
-        </div>
-        <div class="scroll-indicator-down" onclick="scrollToNextSection()">
-            <div class="scroll-arrow-down"></div>
-        </div>
-    </section>
 
     <!-- Section 28 - Empty Ocean -->
-    <section id="section-28" class="content-section">
-        <canvas id="ocean-canvas-28"></canvas>
+    <section id="section-22" class="content-section">
+        <canvas id="ocean-canvas-22"></canvas>
             <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
             <div class="scroll-arrow-up"></div>
         </div>
@@ -3830,9 +5124,10 @@
         </div>
     </section>
 
+
     <!-- Section 29 - Empty Ocean -->
-    <section id="section-29" class="content-section">
-        <canvas id="ocean-canvas-29"></canvas>
+    <section id="section-23" class="content-section">
+        <canvas id="ocean-canvas-23"></canvas>
             <div class="scroll-indicator-up" onclick="scrollToPrevSection()">
             <div class="scroll-arrow-up"></div>
         </div>
@@ -3929,8 +5224,23 @@
         let currentSection = 1; // 1 = hero, 2 = section2, 3 = section3, 4 = section4
         let isTransitioning = false;
         
+        // Section 3 (The Universe) için özel scroll kontrolü
+        let section3ScrollCount = 0;
+        const section3ScrollThreshold = 3; // Section 3'ten çıkmak için 3 scroll gerekli
+        let section3ScrollTimer = null;
+        
         // Background video element
         const bgVideo = document.getElementById('background-video'); // Prevent multiple transitions
+        
+        // Mobil/tablet cihazlarda arkaplan videosunu tamamen devre dışı bırak (performans)
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+                         || window.innerWidth <= 1024;
+        
+        if (isMobile && bgVideo) {
+            bgVideo.style.display = 'none';
+            bgVideo.pause();
+            bgVideo.src = ''; // Video kaynağını kaldır
+        }
         let sectionZoomProgress = 0; // For section to section transitions
         const sectionMaxZoom = 60; // Shorter zoom for section transitions
         
@@ -4002,8 +5312,32 @@
                 }
                 
                 updateCameraZoom();
+            } else if (currentSection === 3) {
+                // ÖZEL SCROLL KONTROLÜ - THE UNIVERSE (Section 3)
+                if (delta > 0) {
+                    // Aşağı scroll - Section 4'e geçmek için birden fazla scroll gerekli
+                    section3ScrollCount++;
+                    
+                    // Timer'ı sıfırla - 2 saniye içinde scroll yapmazsa sayacı sıfırla
+                    clearTimeout(section3ScrollTimer);
+                    section3ScrollTimer = setTimeout(() => {
+                        section3ScrollCount = 0;
+                    }, 2000);
+                    
+                    // Threshold'a ulaştıysak geç
+                    if (section3ScrollCount >= section3ScrollThreshold) {
+                        section3ScrollCount = 0;
+                        transitionToSection(4);
+                        sectionZoomProgress = 0;
+                    }
+                } else if (delta < 0) {
+                    // Yukarı scroll - Section 2'ye geç
+                    section3ScrollCount = 0;
+                    transitionToSection(2);
+                    sectionZoomProgress = 0;
+                }
             } else if (currentSection >= 2 && currentSection <= 29) {
-                // TEK SCROLL GEÇİŞ
+                // TEK SCROLL GEÇİŞ (Section 3 hariç)
                 if (delta > 0 && currentSection < 29) {
                     transitionToSection(currentSection + 1);
                     sectionZoomProgress = 0;
@@ -4199,6 +5533,8 @@
                 } else if (targetSection === 3) {
                     section3.classList.add('active');
                     camera3.position.y = -25;
+                    // Section 3'e girerken scroll sayacını sıfırla
+                    section3ScrollCount = 0;
                 } else if (targetSection === 4) {
                     section4.classList.add('active');
                 } else if (targetSection === 5) {
@@ -4531,6 +5867,84 @@
 
         // Start listening for wheel events after all scenes are created
         window.addEventListener('wheel', handleWheel, { passive: false });
+        
+        // ==========================================
+        // TOUCH EVENT DESTEĞİ (MOBİL/TABLET) - GELİŞTİRİLMİŞ
+        // ==========================================
+        
+        let touchStartY = 0;
+        let touchEndY = 0;
+        let isTouching = false;
+        let touchStartTime = 0;
+        
+        // Touch start
+        document.addEventListener('touchstart', (e) => {
+            // Section content scroll'u engellemeden çalış
+            if (e.target.closest('.section-content') || 
+                e.target.closest('.section-6-column') ||
+                e.target.closest('.ghost-box')) {
+                return; // İçerik scroll'una izin ver
+            }
+            
+            touchStartY = e.touches[0].clientY;
+            touchStartTime = Date.now();
+            isTouching = true;
+        }, { passive: true });
+        
+        // Touch move - prevent default on body
+        document.addEventListener('touchmove', (e) => {
+            if (!e.target.closest('.section-content') && 
+                !e.target.closest('.section-6-column') &&
+                !e.target.closest('.ghost-box')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        // Touch end - swipe detection
+        document.addEventListener('touchend', (e) => {
+            if (!isTouching) return;
+            
+            touchEndY = e.changedTouches[0].clientY;
+            const swipeDistance = touchStartY - touchEndY;
+            const swipeTime = Date.now() - touchStartTime;
+            const swipeThreshold = 30; // Daha hassas
+            const maxSwipeTime = 500; // Max 500ms içinde
+            
+            // Hızlı swipe kontrolü
+            if (swipeTime < maxSwipeTime && Math.abs(swipeDistance) > swipeThreshold) {
+                // Swipe down (yukarı git - previous section)
+                if (swipeDistance < 0) {
+                    if (currentSection === 1) {
+                        // Hero'da aşağı swipe yaparsan hiçbir şey olmasın
+                        // Çünkü hero'da zoom var
+                    } else {
+                        scrollToPrevSection();
+                    }
+                }
+                // Swipe up (aşağı git - next section)
+                else {
+                    if (currentSection === 1) {
+                        // Hero'da yukarı swipe = video'ya geç
+                        if (zoomProgress < maxZoom) {
+                            zoomProgress = maxZoom;
+                            updateCameraZoom();
+                        }
+                        setTimeout(() => {
+                            transitionToSection(2);
+                        }, 100);
+                    } else {
+                        scrollToNextSection();
+                    }
+                }
+            }
+            
+            isTouching = false;
+        }, { passive: true });
+        
+        // Touch cancel
+        document.addEventListener('touchcancel', () => {
+            isTouching = false;
+        }, { passive: true });
 
         // ==========================================
         // PROFESSIONAL IMAGE LIGHTBOX SYSTEM
@@ -4781,7 +6195,7 @@
         if (textContentSection5 && section5) {
             // Observer for section 5
             const section5Observer = new MutationObserver(() => {
-                const isActive = section7.classList.contains('active');
+                const isActive = section5.classList.contains('active');
                 console.log('Section 5 active:', isActive, 'userInteracted5:', userInteracted5);
                 
                 if (isActive && !userInteracted5) {
@@ -4809,7 +6223,7 @@
                 }
             });
             
-            section5Observer.observe(section7, { attributes: true, attributeFilter: ['class'] });
+            section5Observer.observe(section5, { attributes: true, attributeFilter: ['class'] });
             
             function startAutoScroll5() {
                 stopAutoScroll5();
@@ -4855,13 +6269,35 @@
         }
 
         // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 9 (1st Note Page)
+        // ==========================================
+        
+        if (section9) {
+            const section9Observer = new MutationObserver(() => {
+                const isActive = section9.classList.contains('active');
+                const leftImg9 = document.querySelector('.section-9-left-image');
+                const rightImg9 = document.querySelector('.section-9-right-image');
+                
+                if (isActive) {
+                    if (leftImg9) leftImg9.style.display = 'block';
+                    if (rightImg9) rightImg9.style.display = 'block';
+                } else {
+                    if (leftImg9) leftImg9.style.display = 'none';
+                    if (rightImg9) rightImg9.style.display = 'none';
+                }
+            });
+            
+            section9Observer.observe(section9, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
         // IMAGE VISIBILITY FOR SECTION 6
         // ==========================================
         
         // section6 already declared above, just use it
         if (section6) {
             const section6Observer = new MutationObserver(() => {
-                const isActive = section8.classList.contains('active');
+                const isActive = section6.classList.contains('active');
                 const leftImg6 = document.querySelector('.section-6-left-image');
                 const rightImg6 = document.querySelector('.section-6-right-image');
                 
@@ -4874,7 +6310,7 @@
                 }
             });
             
-            section6Observer.observe(section8, { attributes: true, attributeFilter: ['class'] });
+            section6Observer.observe(section6, { attributes: true, attributeFilter: ['class'] });
         }
 
         // ==========================================
@@ -4884,7 +6320,7 @@
         // section7 already declared above
         if (section7) {
             const section7Observer = new MutationObserver(() => {
-                const isActive = section9.classList.contains('active');
+                const isActive = section7.classList.contains('active');
                 const rightImg7 = document.querySelector('.section-7-right-image');
                 
                 if (isActive) {
@@ -4894,7 +6330,7 @@
                 }
             });
             
-            section7Observer.observe(section9, { attributes: true, attributeFilter: ['class'] });
+            section7Observer.observe(section7, { attributes: true, attributeFilter: ['class'] });
         }
 
         // ==========================================
@@ -4903,7 +6339,7 @@
         
         if (section8) {
             const section8Observer = new MutationObserver(() => {
-                const isActive = section10.classList.contains('active');
+                const isActive = section8.classList.contains('active');
                 const leftImg8 = document.querySelector('.section-8-left-image');
                 const rightImg8 = document.querySelector('.section-8-right-image');
                 
@@ -4916,68 +6352,9 @@
                 }
             });
             
-            section8Observer.observe(section10, { attributes: true, attributeFilter: ['class'] });
+            section8Observer.observe(section8, { attributes: true, attributeFilter: ['class'] });
         }
 
-        // ==========================================
-        // IMAGE VISIBILITY FOR SECTION 10
-        // ==========================================
-        
-        if (section10) {
-            const section10Observer = new MutationObserver(() => {
-                const isActive = section12.classList.contains('active');
-                const leftImg10 = document.querySelector('.section-10-left-image');
-                const rightImg10 = document.querySelector('.section-10-right-image');
-                
-                if (isActive) {
-                    if (leftImg10) leftImg10.style.display = 'block';
-                    if (rightImg10) rightImg10.style.display = 'block';
-                } else {
-                    if (leftImg10) leftImg10.style.display = 'none';
-                    if (rightImg10) rightImg10.style.display = 'none';
-                }
-            });
-            
-            section10Observer.observe(section12, { attributes: true, attributeFilter: ['class'] });
-        }
-
-        // ==========================================
-        // IMAGE VISIBILITY FOR SECTION 11
-        // ==========================================
-        
-        if (section11) {
-            const section11Observer = new MutationObserver(() => {
-                const isActive = section13.classList.contains('active');
-                const rightImg11 = document.querySelector('.section-11-right-image');
-                
-                if (isActive) {
-                    if (rightImg11) rightImg11.style.display = 'block';
-                } else {
-                    if (rightImg11) rightImg11.style.display = 'none';
-                }
-            });
-            
-            section11Observer.observe(section13, { attributes: true, attributeFilter: ['class'] });
-        }
-
-        // ==========================================
-        // IMAGE VISIBILITY FOR SECTION 12
-        // ==========================================
-        
-        if (section12) {
-            const section12Observer = new MutationObserver(() => {
-                const isActive = section14.classList.contains('active');
-                const rightImg12 = document.querySelector('.section-12-right-image');
-                
-                if (isActive) {
-                    if (rightImg12) rightImg12.style.display = 'block';
-                } else {
-                    if (rightImg12) rightImg12.style.display = 'none';
-                }
-            });
-            
-            section12Observer.observe(section14, { attributes: true, attributeFilter: ['class'] });
-        }
 
         // ==========================================
         // IMAGE VISIBILITY FOR SECTION 13
@@ -4985,7 +6362,7 @@
         
         if (section13) {
             const section13Observer = new MutationObserver(() => {
-                const isActive = section15.classList.contains('active');
+                const isActive = section13.classList.contains('active');
                 const leftImg13 = document.querySelector('.section-13-left-image');
                 const rightImg13 = document.querySelector('.section-13-right-image');
                 
@@ -4998,7 +6375,7 @@
                 }
             });
             
-            section13Observer.observe(section15, { attributes: true, attributeFilter: ['class'] });
+            section13Observer.observe(section13, { attributes: true, attributeFilter: ['class'] });
         }
 
         // ==========================================
@@ -5007,17 +6384,20 @@
         
         if (section14) {
             const section14Observer = new MutationObserver(() => {
-                const isActive = section16.classList.contains('active');
+                const isActive = section14.classList.contains('active');
+                const leftImg14 = document.querySelector('.section-14-left-image');
                 const rightImg14 = document.querySelector('.section-14-right-image');
                 
                 if (isActive) {
+                    if (leftImg14) leftImg14.style.display = 'block';
                     if (rightImg14) rightImg14.style.display = 'block';
                 } else {
+                    if (leftImg14) leftImg14.style.display = 'none';
                     if (rightImg14) rightImg14.style.display = 'none';
                 }
             });
             
-            section14Observer.observe(section16, { attributes: true, attributeFilter: ['class'] });
+            section14Observer.observe(section14, { attributes: true, attributeFilter: ['class'] });
         }
 
         // ==========================================
@@ -5026,7 +6406,7 @@
         
         if (section15) {
             const section15Observer = new MutationObserver(() => {
-                const isActive = section17.classList.contains('active');
+                const isActive = section15.classList.contains('active');
                 const rightImg15 = document.querySelector('.section-15-right-image');
                 
                 if (isActive) {
@@ -5036,7 +6416,7 @@
                 }
             });
             
-            section15Observer.observe(section17, { attributes: true, attributeFilter: ['class'] });
+            section15Observer.observe(section15, { attributes: true, attributeFilter: ['class'] });
         }
 
         // ==========================================
@@ -5045,7 +6425,146 @@
         
         if (section16) {
             const section16Observer = new MutationObserver(() => {
-                const isActive = section18.classList.contains('active');
+                const isActive = section16.classList.contains('active');
+                const rightImg16 = document.querySelector('.section-16-right-image');
+                
+                if (isActive) {
+                    if (rightImg16) rightImg16.style.display = 'block';
+                } else {
+                    if (rightImg16) rightImg16.style.display = 'none';
+                }
+            });
+            
+            section16Observer.observe(section16, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 10
+        // ==========================================
+        
+        if (section10) {
+            const section10Observer = new MutationObserver(() => {
+                const isActive = section10.classList.contains('active');
+                const leftImg10 = document.querySelector('.section-10-left-image');
+                const rightImg10 = document.querySelector('.section-10-right-image');
+                
+                if (isActive) {
+                    if (leftImg10) leftImg10.style.display = 'block';
+                    if (rightImg10) rightImg10.style.display = 'block';
+                } else {
+                    if (leftImg10) leftImg10.style.display = 'none';
+                    if (rightImg10) rightImg10.style.display = 'none';
+                }
+            });
+            
+            section10Observer.observe(section10, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 11
+        // ==========================================
+        
+        if (section11) {
+            const section11Observer = new MutationObserver(() => {
+                const isActive = section11.classList.contains('active');
+                const rightImg11 = document.querySelector('.section-11-right-image');
+                
+                if (isActive) {
+                    if (rightImg11) rightImg11.style.display = 'block';
+                } else {
+                    if (rightImg11) rightImg11.style.display = 'none';
+                }
+            });
+            
+            section11Observer.observe(section11, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 12
+        // ==========================================
+        
+        if (section12) {
+            const section12Observer = new MutationObserver(() => {
+                const isActive = section12.classList.contains('active');
+                const rightImg12 = document.querySelector('.section-12-right-image');
+                
+                if (isActive) {
+                    if (rightImg12) rightImg12.style.display = 'block';
+                } else {
+                    if (rightImg12) rightImg12.style.display = 'none';
+                }
+            });
+            
+            section12Observer.observe(section12, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 13
+        // ==========================================
+        
+        if (section13) {
+            const section13Observer = new MutationObserver(() => {
+                const isActive = section13.classList.contains('active');
+                const leftImg13 = document.querySelector('.section-13-left-image');
+                const rightImg13 = document.querySelector('.section-13-right-image');
+                
+                if (isActive) {
+                    if (leftImg13) leftImg13.style.display = 'block';
+                    if (rightImg13) rightImg13.style.display = 'block';
+                } else {
+                    if (leftImg13) leftImg13.style.display = 'none';
+                    if (rightImg13) rightImg13.style.display = 'none';
+                }
+            });
+            
+            section13Observer.observe(section13, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 14
+        // ==========================================
+        
+        if (section14) {
+            const section14Observer = new MutationObserver(() => {
+                const isActive = section14.classList.contains('active');
+                const rightImg14 = document.querySelector('.section-14-right-image');
+                
+                if (isActive) {
+                    if (rightImg14) rightImg14.style.display = 'block';
+                } else {
+                    if (rightImg14) rightImg14.style.display = 'none';
+                }
+            });
+            
+            section14Observer.observe(section14, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 15
+        // ==========================================
+        
+        if (section15) {
+            const section15Observer = new MutationObserver(() => {
+                const isActive = section15.classList.contains('active');
+                const rightImg15 = document.querySelector('.section-15-right-image');
+                
+                if (isActive) {
+                    if (rightImg15) rightImg15.style.display = 'block';
+                } else {
+                    if (rightImg15) rightImg15.style.display = 'none';
+                }
+            });
+            
+            section15Observer.observe(section15, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 16
+        // ==========================================
+        
+        if (section16) {
+            const section16Observer = new MutationObserver(() => {
+                const isActive = section16.classList.contains('active');
                 const leftImg16 = document.querySelector('.section-16-left-image');
                 const rightImg16 = document.querySelector('.section-16-right-image');
                 
@@ -5058,7 +6577,7 @@
                 }
             });
             
-            section16Observer.observe(section18, { attributes: true, attributeFilter: ['class'] });
+            section16Observer.observe(section16, { attributes: true, attributeFilter: ['class'] });
         }
 
         // ==========================================
@@ -5067,7 +6586,7 @@
         
         if (section17) {
             const section17Observer = new MutationObserver(() => {
-                const isActive = section19.classList.contains('active');
+                const isActive = section17.classList.contains('active');
                 const leftImg17 = document.querySelector('.section-17-left-image');
                 const rightImg17 = document.querySelector('.section-17-right-image');
                 
@@ -5080,8 +6599,259 @@
                 }
             });
             
-            section17Observer.observe(section19, { attributes: true, attributeFilter: ['class'] });
+            section17Observer.observe(section17, { attributes: true, attributeFilter: ['class'] });
         }
+
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 13
+        // ==========================================
+        
+        if (section13) {
+            const section13Observer = new MutationObserver(() => {
+                const isActive = section13.classList.contains('active');
+                const leftImg13 = document.querySelector('.section-13-left-image');
+                const rightImg13 = document.querySelector('.section-13-right-image');
+                
+                if (isActive) {
+                    if (leftImg13) leftImg13.style.display = 'block';
+                    if (rightImg13) rightImg13.style.display = 'block';
+                } else {
+                    if (leftImg13) leftImg13.style.display = 'none';
+                    if (rightImg13) rightImg13.style.display = 'none';
+                }
+            });
+            
+            section13Observer.observe(section13, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 14
+        // ==========================================
+        
+        if (section14) {
+            const section14Observer = new MutationObserver(() => {
+                const isActive = section14.classList.contains('active');
+                const leftImg14 = document.querySelector('.section-14-left-image');
+                const rightImg14 = document.querySelector('.section-14-right-image');
+                
+                if (isActive) {
+                    if (leftImg14) leftImg14.style.display = 'block';
+                    if (rightImg14) rightImg14.style.display = 'block';
+                } else {
+                    if (leftImg14) leftImg14.style.display = 'none';
+                    if (rightImg14) rightImg14.style.display = 'none';
+                }
+            });
+            
+            section14Observer.observe(section14, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 15
+        // ==========================================
+        
+        if (section15) {
+            const section15Observer = new MutationObserver(() => {
+                const isActive = section15.classList.contains('active');
+                const rightImg15 = document.querySelector('.section-15-right-image');
+                
+                if (isActive) {
+                    if (rightImg15) rightImg15.style.display = 'block';
+                } else {
+                    if (rightImg15) rightImg15.style.display = 'none';
+                }
+            });
+            
+            section15Observer.observe(section15, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 16
+        // ==========================================
+        
+        if (section16) {
+            const section16Observer = new MutationObserver(() => {
+                const isActive = section16.classList.contains('active');
+                const rightImg16 = document.querySelector('.section-16-right-image');
+                
+                if (isActive) {
+                    if (rightImg16) rightImg16.style.display = 'block';
+                } else {
+                    if (rightImg16) rightImg16.style.display = 'none';
+                }
+            });
+            
+            section16Observer.observe(section16, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 10
+        // ==========================================
+        
+        if (section10) {
+            const section10Observer = new MutationObserver(() => {
+                const isActive = section10.classList.contains('active');
+                const leftImg10 = document.querySelector('.section-10-left-image');
+                const rightImg10 = document.querySelector('.section-10-right-image');
+                
+                if (isActive) {
+                    if (leftImg10) leftImg10.style.display = 'block';
+                    if (rightImg10) rightImg10.style.display = 'block';
+                } else {
+                    if (leftImg10) leftImg10.style.display = 'none';
+                    if (rightImg10) rightImg10.style.display = 'none';
+                }
+            });
+            
+            section10Observer.observe(section10, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 12
+        // ==========================================
+        
+        if (section12) {
+            const section12Observer = new MutationObserver(() => {
+                const isActive = section12.classList.contains('active');
+                const leftImg12 = document.querySelector('.section-12-left-image');
+                const rightImg12 = document.querySelector('.section-12-right-image');
+                
+                if (isActive) {
+                    if (leftImg12) leftImg12.style.display = 'block';
+                    if (rightImg12) rightImg12.style.display = 'block';
+                } else {
+                    if (leftImg12) leftImg12.style.display = 'none';
+                    if (rightImg12) rightImg12.style.display = 'none';
+                }
+            });
+            
+            section12Observer.observe(section12, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 17
+        // ==========================================
+        
+        if (section17) {
+            const section17Observer = new MutationObserver(() => {
+                const isActive = section17.classList.contains('active');
+                const leftImg17 = document.querySelector('.section-17-left-image');
+                const rightImg17 = document.querySelector('.section-17-right-image');
+                
+                if (isActive) {
+                    if (leftImg17) leftImg17.style.display = 'block';
+                    if (rightImg17) rightImg17.style.display = 'block';
+                } else {
+                    if (leftImg17) leftImg17.style.display = 'none';
+                    if (rightImg17) rightImg17.style.display = 'none';
+                }
+            });
+            
+            section17Observer.observe(section17, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 20
+        // ==========================================
+        
+        if (section20) {
+            const section20Observer = new MutationObserver(() => {
+                const isActive = section20.classList.contains('active');
+                const leftImg20 = document.querySelector('.section-20-left-image');
+                const rightImg20 = document.querySelector('.section-20-right-image');
+                
+                if (isActive) {
+                    if (leftImg20) leftImg20.style.display = 'block';
+                    if (rightImg20) rightImg20.style.display = 'block';
+                } else {
+                    if (leftImg20) leftImg20.style.display = 'none';
+                    if (rightImg20) rightImg20.style.display = 'none';
+                }
+            });
+            
+            section20Observer.observe(section20, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 21
+        // ==========================================
+        
+        if (section21) {
+            const section21Observer = new MutationObserver(() => {
+                const isActive = section21.classList.contains('active');
+                const leftImg21 = document.querySelector('.section-21-left-image');
+                const rightImg21 = document.querySelector('.section-21-right-image');
+                
+                if (isActive) {
+                    if (leftImg21) leftImg21.style.display = 'block';
+                    if (rightImg21) rightImg21.style.display = 'block';
+                } else {
+                    if (leftImg21) leftImg21.style.display = 'none';
+                    if (rightImg21) rightImg21.style.display = 'none';
+                }
+            });
+            
+            section21Observer.observe(section21, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 11
+        // ==========================================
+        
+        if (section11) {
+            const section11Observer = new MutationObserver(() => {
+                const isActive = section11.classList.contains('active');
+                const rightImg11 = document.querySelector('.section-11-right-image');
+                
+                if (isActive) {
+                    if (rightImg11) rightImg11.style.display = 'block';
+                } else {
+                    if (rightImg11) rightImg11.style.display = 'none';
+                }
+            });
+            
+            section11Observer.observe(section11, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 18
+        // ==========================================
+        
+        if (section18) {
+            const section18Observer = new MutationObserver(() => {
+                const isActive = section18.classList.contains('active');
+                const rightImg18 = document.querySelector('.section-18-right-image');
+                
+                if (isActive) {
+                    if (rightImg18) rightImg18.style.display = 'block';
+                } else {
+                    if (rightImg18) rightImg18.style.display = 'none';
+                }
+            });
+            
+            section18Observer.observe(section18, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ==========================================
+        // IMAGE VISIBILITY FOR SECTION 19
+        // ==========================================
+        
+        if (section19) {
+            const section19Observer = new MutationObserver(() => {
+                const isActive = section19.classList.contains('active');
+                const rightImg19 = document.querySelector('.section-19-right-image');
+                
+                if (isActive) {
+                    if (rightImg19) rightImg19.style.display = 'block';
+                } else {
+                    if (rightImg19) rightImg19.style.display = 'none';
+                }
+            });
+            
+            section19Observer.observe(section19, { attributes: true, attributeFilter: ['class'] });
+        }
+
     </script>
 
     <script>
