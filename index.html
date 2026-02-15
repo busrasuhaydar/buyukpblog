@@ -35,6 +35,19 @@
             #background-video {
                 display: none !important;
             }
+            
+            /* Tüm ocean canvas'ları da gizle (performans) */
+            canvas[id*="ocean-canvas"],
+            canvas[id*="concept-ocean-canvas"] {
+                display: none !important;
+            }
+            
+            /* Section'lara düz arkaplan */
+            .content-section,
+            #next-section,
+            #hero-section {
+                background: linear-gradient(180deg, #000428 0%, #004e92 100%) !important;
+            }
         }
 
         body {
@@ -3303,6 +3316,484 @@
         /* ========================================== */
         /* MOBİL VE TABLET RESPONSIVE TASARIM */
         /* ========================================== */
+        
+        /* Tablet (1024px ve altı) */
+        @media (max-width: 1024px) {
+            /* Hero section başlık boyutları */
+            .hero-title {
+                font-size: clamp(2rem, 8vw, 4rem);
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+            }
+            
+            /* Section başlıkları */
+            .section-title {
+                font-size: clamp(1.5rem, 5vw, 2.2rem);
+                margin-bottom: 1rem;
+            }
+            
+            /* Metin kutuları - SCROLL EDİLEBİLİR */
+            .section-content {
+                width: 90% !important;
+                max-width: 100% !important;
+                padding: 1.2rem !important;
+                max-height: 70vh !important;
+                overflow-y: auto !important;
+            }
+            
+            .section-text-content {
+                max-height: 65vh !important;
+                padding: 1.5rem !important;
+                overflow-y: auto !important;
+            }
+            
+            /* Text block padding */
+            .text-block {
+                padding: 1rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            
+            /* Story text boyutları */
+            .story-text {
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+            }
+            
+            .story-text-bold {
+                font-size: 1rem !important;
+            }
+            
+            /* NOTA GÖRSELLERİ - KÜÇÜK VE ORTADA */
+            [class*="section-"][class*="-left-image"],
+            [class*="section-"][class*="-right-image"] {
+                position: relative !important;
+                transform: none !important;
+                width: 60% !important;
+                max-width: 200px !important;
+                height: auto !important;
+                max-height: 20vh !important;
+                margin: 0.5rem auto !important;
+                display: block !important;
+                left: auto !important;
+                right: auto !important;
+                top: auto !important;
+                object-fit: contain !important;
+            }
+            
+            /* Section 3 - The Universe */
+            .section-3-content-container {
+                width: 90% !important;
+                max-width: 100% !important;
+                flex-direction: column !important;
+                gap: 1rem !important;
+                max-height: none !important;
+            }
+            
+            .section-3-image-container,
+            .section-3-universe-content {
+                flex: none !important;
+                width: 100% !important;
+                max-height: none !important;
+            }
+            
+            .section-3-dream-piano-image {
+                max-height: 25vh !important;
+                width: auto !important;
+                max-width: 80% !important;
+            }
+            
+            .section-3-universe-content {
+                max-height: 50vh !important;
+                overflow-y: auto !important;
+            }
+            
+            /* Section 6 - Split columns */
+            .section-6-split-container {
+                flex-direction: column !important;
+                max-height: none !important;
+                gap: 0.8rem !important;
+            }
+            
+            .section-6-column {
+                max-height: 30vh !important;
+                padding: 1rem !important;
+                overflow-y: auto !important;
+            }
+            
+            .section-6-title {
+                font-size: clamp(1.3rem, 4vw, 1.8rem) !important;
+            }
+            
+            /* Video container */
+            .video-container {
+                width: 90% !important;
+                max-width: 500px !important;
+            }
+            
+            /* Magic content */
+            .section-magic-content {
+                width: 90% !important;
+                padding: 1.5rem 1rem !important;
+                max-height: 70vh !important;
+                overflow-y: auto !important;
+            }
+            
+            /* Locked content */
+            .section-9-locked-content {
+                width: 90% !important;
+                padding: 1.5rem !important;
+                max-height: 70vh !important;
+                overflow-y: auto !important;
+            }
+            
+            .section-9-locked-title {
+                font-size: clamp(2rem, 7vw, 3rem) !important;
+            }
+            
+            .section-9-lock-icon {
+                width: clamp(80px, 12vw, 150px) !important;
+                height: clamp(80px, 12vw, 150px) !important;
+            }
+            
+            /* Features header */
+            .section-3-features-header {
+                padding: 0.6rem !important;
+                gap: 0.4rem !important;
+            }
+            
+            .feature-tag {
+                padding: 0.3rem 0.6rem !important;
+                font-size: 0.6rem !important;
+            }
+        }
+        
+        /* Mobil (768px ve altı) */
+        @media (max-width: 768px) {
+            /* Hero */
+            .hero-title {
+                font-size: clamp(1.8rem, 10vw, 3.5rem);
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(0.8rem, 2.8vw, 1.1rem);
+            }
+            
+            .hero-author {
+                font-size: clamp(0.7rem, 2vw, 0.9rem);
+            }
+            
+            /* Piano silhouette küçült */
+            .piano-silhouette {
+                width: 70% !important;
+                max-width: 250px !important;
+            }
+            
+            /* Section başlıkları */
+            .section-title {
+                font-size: clamp(1.3rem, 6vw, 2rem);
+                margin-bottom: 0.8rem;
+            }
+            
+            /* Metin kutuları */
+            .section-content {
+                width: 95% !important;
+                padding: 1rem !important;
+                max-height: 65vh !important;
+            }
+            
+            .section-text-content {
+                max-height: 60vh !important;
+                padding: 1.2rem !important;
+            }
+            
+            /* Text */
+            .story-text {
+                font-size: 0.85rem !important;
+                line-height: 1.5 !important;
+            }
+            
+            .story-text-bold {
+                font-size: 0.95rem !important;
+            }
+            
+            /* NOTA GÖRSELLERİ - DAHA KÜÇÜK */
+            [class*="section-"][class*="-left-image"],
+            [class*="section-"][class*="-right-image"] {
+                width: 50% !important;
+                max-width: 150px !important;
+                max-height: 15vh !important;
+                margin: 0.3rem auto !important;
+            }
+            
+            /* Section 3 */
+            .section-3-dream-piano-image {
+                max-height: 20vh !important;
+                max-width: 70% !important;
+            }
+            
+            .section-3-universe-content {
+                max-height: 45vh !important;
+            }
+            
+            /* Section 6 columns */
+            .section-6-column {
+                max-height: 25vh !important;
+                padding: 0.8rem !important;
+            }
+            
+            .section-6-title {
+                font-size: clamp(1.1rem, 5vw, 1.5rem) !important;
+                margin-bottom: 0.8rem !important;
+            }
+            
+            /* Video */
+            .video-container {
+                width: 95% !important;
+            }
+            
+            .video-controls {
+                padding: 0.5rem !important;
+            }
+            
+            .control-btn {
+                width: 35px !important;
+                height: 35px !important;
+            }
+            
+            /* Locked content */
+            .section-9-locked-content {
+                width: 95% !important;
+                padding: 1.2rem !important;
+                max-height: 65vh !important;
+            }
+            
+            .section-9-locked-title {
+                font-size: clamp(1.8rem, 9vw, 2.8rem) !important;
+            }
+            
+            .section-9-locked-subtitle {
+                font-size: clamp(1.5rem, 7vw, 2.3rem) !important;
+            }
+            
+            /* Magic content */
+            .section-magic-content {
+                width: 95% !important;
+                padding: 1.2rem 0.8rem !important;
+                max-height: 65vh !important;
+            }
+            
+            .magic-title {
+                font-size: clamp(1.6rem, 7vw, 2.2rem) !important;
+            }
+            
+            .magic-text {
+                font-size: 0.85rem !important;
+            }
+        }
+        
+        /* Küçük mobil (480px ve altı) */
+        @media (max-width: 480px) {
+            /* Hero */
+            .hero-title {
+                font-size: clamp(1.5rem, 12vw, 2.8rem);
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(0.7rem, 3vw, 1rem);
+                letter-spacing: 0.15em !important;
+            }
+            
+            .hero-author {
+                font-size: 0.75rem;
+            }
+            
+            /* Section başlık */
+            .section-title {
+                font-size: clamp(1.1rem, 7vw, 1.8rem);
+            }
+            
+            /* Metin kutuları */
+            .section-content {
+                width: 98% !important;
+                padding: 0.8rem !important;
+                border-radius: 12px !important;
+                max-height: 60vh !important;
+            }
+            
+            .section-text-content {
+                max-height: 55vh !important;
+                padding: 1rem !important;
+            }
+            
+            /* Text block */
+            .text-block {
+                padding: 0.7rem !important;
+                margin-bottom: 0.6rem !important;
+                border-radius: 10px !important;
+            }
+            
+            /* Text boyutları */
+            .story-text {
+                font-size: 0.8rem !important;
+                line-height: 1.4 !important;
+            }
+            
+            .story-text-bold {
+                font-size: 0.9rem !important;
+            }
+            
+            .story-text-italic,
+            .story-text-emphasis {
+                font-size: 0.85rem !important;
+            }
+            
+            /* NOTA GÖRSELLERİ - EN KÜÇÜK */
+            [class*="section-"][class*="-left-image"],
+            [class*="section-"][class*="-right-image"] {
+                width: 45% !important;
+                max-width: 120px !important;
+                max-height: 12vh !important;
+                margin: 0.2rem auto !important;
+            }
+            
+            /* Section 3 */
+            .section-3-dream-piano-image {
+                max-height: 18vh !important;
+                max-width: 65% !important;
+            }
+            
+            .section-3-universe-content {
+                max-height: 40vh !important;
+            }
+            
+            /* Section 6 */
+            .section-6-column {
+                max-height: 22vh !important;
+                padding: 0.7rem !important;
+            }
+            
+            .section-6-title {
+                font-size: clamp(1rem, 6vw, 1.3rem) !important;
+                margin-bottom: 0.6rem !important;
+            }
+            
+            /* Video container */
+            .video-container {
+                width: 98% !important;
+                border-radius: 12px !important;
+            }
+            
+            /* Locked content */
+            .section-9-locked-content {
+                width: 98% !important;
+                padding: 1rem 0.8rem !important;
+                max-height: 60vh !important;
+            }
+            
+            .section-9-locked-title {
+                font-size: clamp(1.5rem, 10vw, 2.5rem) !important;
+            }
+            
+            .section-9-locked-subtitle {
+                font-size: clamp(1.3rem, 8vw, 2rem) !important;
+            }
+            
+            .section-9-lock-icon {
+                width: clamp(60px, 10vw, 100px) !important;
+                height: clamp(60px, 10vw, 100px) !important;
+            }
+            
+            /* Magic content */
+            .section-magic-content {
+                width: 98% !important;
+                padding: 1rem 0.7rem !important;
+                max-height: 60vh !important;
+            }
+            
+            .magic-title {
+                font-size: clamp(1.4rem, 8vw, 2rem) !important;
+            }
+            
+            .magic-text {
+                font-size: 0.8rem !important;
+            }
+            
+            /* Piano silhouette */
+            .piano-silhouette {
+                width: 80% !important;
+                max-width: 200px !important;
+            }
+        }
+        
+        /* Touch device optimizasyonları */
+        @media (hover: none) and (pointer: coarse) {
+            /* Smooth scrolling */
+            .section-content,
+            .section-text-content,
+            .section-6-column,
+            .section-3-universe-content,
+            .section-magic-content,
+            .section-9-locked-content {
+                -webkit-overflow-scrolling: touch !important;
+                scroll-behavior: smooth !important;
+            }
+            
+            /* Touch için daha büyük tıklama alanları */
+            .scroll-indicator-up,
+            .scroll-indicator-down {
+                width: 50px !important;
+                height: 50px !important;
+                padding: 10px;
+            }
+            
+            .control-btn {
+                min-width: 44px !important;
+                min-height: 44px !important;
+            }
+        }
+        
+        /* Yatay mod (landscape) */
+        @media (max-width: 1024px) and (orientation: landscape) {
+            .section-content {
+                max-height: 80vh !important;
+            }
+            
+            .section-text-content {
+                max-height: 75vh !important;
+            }
+            
+            .section-3-content-container {
+                flex-direction: row !important;
+            }
+            
+            .section-3-dream-piano-image {
+                max-height: 60vh !important;
+            }
+            
+            .section-6-split-container {
+                flex-direction: row !important;
+            }
+            
+            .section-6-column {
+                max-height: 70vh !important;
+            }
+        }
+        
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero-title {
+                font-size: clamp(1.5rem, 7vw, 2.5rem);
+            }
+            
+            .section-content {
+                max-height: 85vh !important;
+            }
+            
+            .section-text-content {
+                max-height: 80vh !important;
+            }
+        }
         
         /* Tablet (1024px ve altı) */
         @media (max-width: 1024px) {
