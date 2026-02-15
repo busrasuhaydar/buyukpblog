@@ -4605,6 +4605,152 @@
             }
         }
 
+/* ============================================ */
+/* MOBİL: HER SECTION BÖLÜNÜR - HER SWIPE 1 ŞEY */
+/* ============================================ */
+
+@media (max-width: 1024px) {
+    
+    /* SECTION 3 - THE UNIVERSE: 3 SAYFA OLACAK */
+    /* Sayfa 1: Sadece Features + Başlık */
+    /* Sayfa 2: Sadece Görsel */
+    /* Sayfa 3: Sadece Metin */
+    
+    #section-3 {
+        display: none !important; /* Ana section gizle */
+    }
+    
+    /* Yeni 3 section oluştur */
+    #section-3::before {
+        content: '';
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    
+    /* Section 3 parçaları gizle */
+    .section-3-features-header,
+    .section-3-image-container,
+    .section-3-universe-content {
+        display: none !important;
+    }
+    
+    /* HER ŞEY TAM SAYFA, ORTADA, NET */
+    .content-section {
+        min-height: 100vh !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 2rem !important;
+    }
+    
+    /* TEK BİR METIN KUTUSU - BÜYÜK VE NET */
+    .section-text-content,
+    .section-content {
+        width: 90% !important;
+        max-width: 700px !important;
+        max-height: 75vh !important;
+        padding: 2.5rem 2rem !important;
+        background: rgba(0, 0, 0, 0.85) !important;
+        border: 3px solid rgba(255, 119, 51, 0.6) !important;
+        border-radius: 25px !important;
+        overflow-y: scroll !important;
+        margin: 0 !important;
+    }
+    
+    /* SCROLL BAR ÇOOK BÜYÜK VE NET */
+    .section-text-content::-webkit-scrollbar,
+    .section-content::-webkit-scrollbar {
+        width: 15px !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    .section-text-content::-webkit-scrollbar-track,
+    .section-content::-webkit-scrollbar-track {
+        background: rgba(255, 119, 51, 0.4) !important;
+        border-radius: 10px !important;
+        margin: 5px !important;
+    }
+    
+    .section-text-content::-webkit-scrollbar-thumb,
+    .section-content::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #ff7733 0%, #ff9955 100%) !important;
+        border-radius: 10px !important;
+        border: 2px solid rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    .section-text-content::-webkit-scrollbar-thumb:hover,
+    .section-content::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #ff9955 0%, #ffbb77 100%) !important;
+    }
+    
+    /* BAŞLIKLAR BÜYÜK */
+    .section-title {
+        font-size: clamp(2.5rem, 7vw, 4rem) !important;
+        margin-bottom: 2rem !important;
+        text-align: center !important;
+    }
+    
+    /* TEXT BÜYÜK VE OKUNAKLI */
+    .story-text,
+    .magic-text {
+        font-size: 1.1rem !important;
+        line-height: 1.8 !important;
+        margin-bottom: 1.2rem !important;
+    }
+    
+    .text-block {
+        padding: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+        border-radius: 15px !important;
+    }
+    
+    /* GÖRSELLER - ORTADA, BÜYÜK, TEK BAŞINA */
+    [class*="-left-image"],
+    [class*="-right-image"],
+    .section-3-dream-piano-image {
+        position: relative !important;
+        transform: none !important;
+        width: 85% !important;
+        max-width: 500px !important;
+        height: auto !important;
+        max-height: 60vh !important;
+        margin: 0 auto !important;
+        display: block !important;
+        float: none !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        border: 3px solid rgba(77, 208, 225, 0.4) !important;
+        border-radius: 15px !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+    }
+    
+    /* OK BUTONLARI ÇOK BÜYÜK */
+    .scroll-indicator-up,
+    .scroll-indicator-down {
+        width: 70px !important;
+        height: 70px !important;
+        background: rgba(255, 119, 51, 0.6) !important;
+        border-radius: 50% !important;
+        border: 3px solid rgba(255, 119, 51, 0.8) !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        backdrop-filter: blur(10px) !important;
+    }
+    
+    .scroll-arrow-up,
+    .scroll-arrow-down {
+        width: 25px !important;
+        height: 25px !important;
+        border-width: 4px !important;
+    }
+}
     </style>
 </head>
 <body>
